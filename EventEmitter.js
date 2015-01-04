@@ -35,8 +35,6 @@
          * @param {Object} [ctx]
          */
         once: function (name, fn, ctx) {
-            _.assert(_.isString(name), 'EventEmitter#once: `name` is not a string');
-            _.assert(_.isFunction(fn), 'EventEmitter#once: `fn` is not a function');
             ctx = ctx || this;
 
             var self = this;
@@ -54,10 +52,6 @@
          * @param {Function} [fn]
          */
         off: function (name, fn) {
-            if (!_.isUndefined(name)) {
-                _.assert(_.isString(name), 'EventEmitter#off: `name` is not a string');
-            }
-
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];
             }
