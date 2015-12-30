@@ -6,7 +6,7 @@
 
 Empty object:
 
-```
+```javascript
 var foo = EventEmitter.mixin({});
 foo.on('test', function () {
   console.log('triggered!');
@@ -16,7 +16,7 @@ foo.emit('test');
 
 Existed object: 
 
-```
+```javascript
 EventEmitter.mixin(bar);
 bar.on('test', function () {
   console.log('triggered!');
