@@ -1,6 +1,6 @@
 # EventEmitter.js
 
-My own interpretation of event management.
+> My own interpretation of event management.
 
 ## Usage
 
@@ -17,11 +17,6 @@ List of methods:
 - `emit` (name, params)
     - `name` {string} - name of event
     - `params` {Object} - will be passed as first argument in called actions
-
-## Dependencies
-
-- [underscore.js](http://underscorejs.org) 1.x+
-- [underscore.assert.js](https://github.com/piecioshka/underscore.assert.js) 1.x+
 
 ## License
 

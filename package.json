@@ -1,0 +1,9 @@
+{
+    "private": true,
+    "name": "event-emitter",
+    "version": "2.0.0",
+
+    "scripts": {
+        "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
+    }
+}

@@ -1,3 +1,5 @@
+var EventEmitter = require('../../lib/EventEmitter');
+
 describe('EventEmitter', function () {
     'use strict';
 
