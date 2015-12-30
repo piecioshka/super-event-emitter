@@ -1,8 +1,30 @@
-# EventEmitter.js
+# event-emitter
 
 > My own interpretation of event management.
 
 ## Usage
+
+Empty object:
+
+```
+var foo = EventEmitter.mixin({});
+foo.on('test', function () {
+  console.log('triggered!');
+});
+foo.emit('test');
+```
+
+Existed object: 
+
+```
+EventEmitter.mixin(bar);
+bar.on('test', function () {
+  console.log('triggered!');
+});
+bar.emit('test');
+```
+
+## Docs
 
 List of methods:
 

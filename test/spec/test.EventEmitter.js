@@ -13,7 +13,7 @@ describe('EventEmitter', function () {
     });
 
     beforeEach(function () {
-        Entity = Object.create(EventEmitter);
+        Entity = EventEmitter.mixin({});
         spyFn = jasmine.createSpy('spyFn');
     });
 

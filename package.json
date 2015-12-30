@@ -1,7 +1,8 @@
 {
     "private": true,
     "name": "event-emitter",
-    "version": "2.0.0",
+    "description": "My own interpretation of event management.",
+    "version": "2.1.0",
 
     "scripts": {
         "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
