@@ -1,10 +1,30 @@
 {
-    "private": true,
-    "name": "event-emitter",
-    "description": "My own interpretation of event management.",
-    "version": "2.1.0",
-
+    "name": "super-event-emitter",
+    "description": "Super small and simple interpretation of popular event management.",
+    "version": "3.0.0",
+    "license": "MIT",
     "scripts": {
         "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
-    }
+    },
+    "author": {
+        "name": "Piotr Kowalski",
+        "email": "piecioshka@gmail.com",
+        "url": "piecioshka.pl"
+    },
+    "keywords": [
+        "super",
+        "event",
+        "emitter",
+        "simple",
+        "on",
+        "off",
+        "emit",
+        "mixin",
+        "lightweight"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/piecioshka/super-event-emitter.git"
+    },
+    "main": "lib/EventEmitter.js"
 }
