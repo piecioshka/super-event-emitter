@@ -2,6 +2,8 @@
 
 > Super small and simple interpretation of popular event management.
 
+I was create blog post (in polish language) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
+
 ## Install
 
 ```
@@ -51,7 +53,7 @@ bar.emit('test');
  * `name` {string} - name of event
  * `params` {Object} - will be passed as first argument in called actions
 
-In some reasons (compatibility with any other APIs) I add some aliases
+In some reasons (compatibility with any other APIs) I add some **aliases**:
  
  * `on` = `addEventListener`, `addListener`
  * `off` = `removeEventListener`, `removeListener`
