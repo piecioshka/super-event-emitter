@@ -51,6 +51,12 @@ bar.emit('test');
  * `name` {string} - name of event
  * `params` {Object} - will be passed as first argument in called actions
 
+In some reasons (compatibility with any other APIs) I add some aliases
+ 
+ * `on` = `addEventListener`, `addListener`
+ * `off` = `removeEventListener`, `removeListener`
+ * `emit` = `trigger`
+
 ## Unit test
 
 How to run unit test (written in Jasmine):
