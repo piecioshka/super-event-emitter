@@ -1,5 +1,7 @@
 # super-event-emitter
 
+[![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
+
 > Super small and simple interpretation of popular event management.
 
 I was create blog post (in polish language) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
