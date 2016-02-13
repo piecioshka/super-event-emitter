@@ -37,29 +37,59 @@ bar.emit('test');
 
 ## API
 
-## `on` (`name`, `fn`, `ctx`)
+#### `on( name, fn, ctx )`
 
- * `name` {string} - name of event
- * `fn` {Function} - action which will be called when event will be triggered
- * `ctx` {Object} - object will be context of triggered action
+ * `name` - a string value representing the name of event
+ * `fn` - action which will be called when event will be triggered
+ * `ctx` - object will be context of triggered action
+
+Example usage:
+
+```javascript
+instance.on('foo', function (data) {
+    console.log(data, this);
+}, instance);
+```
+
+#### `once( name, fn, ctx )` - The same as `on` but, after triggered event, destroy all listeners
+
+Example usage:
+
+```javascript
+instance.once('foo', function (data) {
+    console.log(data, this);
+}, instance);
+```
+
+#### `off( name, fn )`
+
+ * `name` - a string value representing the name of event
+ * `fn` - action which will be removed from listeners
  
-### `once` (The same as `on` but, after triggered event, destroy all listeners).
+Example usage:
 
-### `off` (`name`, `fn`)
+```javascript
+instance.off('foo', fooHandler);
+```
 
- * `name` {string} - name of event
- * `fn` {Function} - action which will be removed from listeners
- 
-### `emit` (`name`, `params`)
+#### `emit( name, params )`
 
- * `name` {string} - name of event
- * `params` {Object} - will be passed as first argument in called actions
+ * `name` - a string value representing the name of event
+ * `params` - will be passed as first argument in called actions
+
+Example usage:
+
+```javascript
+instance.emit('foo', { name: 'bar' });
+```
+
+---
 
 In some reasons (compatibility with any other APIs) I add some **aliases**:
  
- * `on` = `addEventListener`, `addListener`
- * `off` = `removeEventListener`, `removeListener`
- * `emit` = `trigger`
+ * `on` => `addEventListener`, `addListener`
+ * `off` => `removeEventListener`, `removeListener`
+ * `emit` => `trigger`
 
 ## Unit test
 
