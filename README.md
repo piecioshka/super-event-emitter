@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 
-> Super small and simple interpretation of popular event management.
+> Super small and simple interpretation of popular event management / aggregation.
 
-I was create blog post (in polish language) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
+I was created a blog post (in polish language) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
 
 ## Install
 
@@ -18,9 +18,11 @@ Simple literal object:
 
 ```javascript
 var foo = EventEmitter.mixin({});
+
 foo.on('test', function () {
     console.log('triggered!');
 }, this);
+
 foo.emit('test');
 ```
 
@@ -29,11 +31,41 @@ Existed object:
 ```javascript
 var bar = {}; // Or any other object.
 EventEmitter.mixin(bar);
+
 bar.on('test', function () {
     console.log('triggered!');
 }, this);
+
 bar.emit('test');
 ```
+
+ECMAScript 6 example:
+
+```javascript
+// File: test.js
+class Person {
+    constructor() {
+        EventEmitter.mixin(this);
+    }
+    
+    say(message) {
+        this.emit('say', message);
+    }
+}
+
+// In some cases we have an error:
+// SyntaxError: Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
+// so use `var` statement.
+var p1 = new Person();
+
+p1.on('say', function (message) {
+    console.log(message);
+});
+
+p1.say('cookie');
+```
+
+Try to test this by: `node --harmony test.js`
 
 ## API
 
