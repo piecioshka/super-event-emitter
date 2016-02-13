@@ -1,7 +1,7 @@
 {
     "name": "super-event-emitter",
-    "description": "Super small and simple interpretation of popular event management.",
-    "version": "3.0.1",
+    "description": "Super small and simple interpretation of popular event management / aggregation.",
+    "version": "3.0.2",
     "license": "MIT",
     "scripts": {
         "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
@@ -15,12 +15,12 @@
         "super",
         "event",
         "emitter",
-        "simple",
+        "mixin",
         "on",
         "off",
         "emit",
-        "mixin",
-        "lightweight"
+        "trigger",
+        "simple"
     ],
     "repository": {
         "type": "git",

@@ -117,8 +117,8 @@ instance.emit('foo', { name: 'bar' });
 
 ---
 
-In some reasons (compatibility with any other APIs) I add some **aliases**:
- 
+For compatibility with any other APIs I was added some **aliases**:
+
  * `on` => `addEventListener`, `addListener`
  * `off` => `removeEventListener`, `removeListener`
  * `emit` => `trigger`
