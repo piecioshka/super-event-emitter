@@ -78,8 +78,8 @@ Try to test this by: `node --harmony test.js`
 Example usage:
 
 ```javascript
-instance.on('foo', function (data) {
-    console.log(data, this);
+instance.on('foo', function (payload) {
+    console.log(payload, this);
 }, instance);
 ```
 
@@ -88,11 +88,13 @@ Specials:
 * when set as `name` value `all` handler will be fired in any event
 
 ```javascript
-instance.on('all', function (data) {
+instance.on('all', function (name, payload) {
     // will be fired, when emit any of event type
+    // - name - event name, in this example will be equal: "something"
+    // - payload - data which are sended, in this example will be equal: { foo: 1 }
 });
 
-instance.emit('something');
+instance.emit('something', { foo: 1 });
 ```
 
 
@@ -101,8 +103,8 @@ instance.emit('something');
 Example usage:
 
 ```javascript
-instance.once('foo', function (data) {
-    console.log(data, this);
+instance.once('foo', function (payload) {
+    console.log(payload, this);
 }, instance);
 ```
 

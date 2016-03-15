@@ -49,15 +49,26 @@ describe('EventEmitter', function () {
         });
 
         it('should throw error when try run with bad params', function () {
-            expect(function () { Entity.on(); }).toThrow();
-            expect(function () { Entity.on(12); }).toThrow();
-            expect(function () { Entity.on('foo'); }).toThrow();
-            expect(function () { Entity.on('foo', 123); }).toThrow();
-            expect(function () { Entity.on('foo', Function); }).not.toThrow();
+            expect(function () {
+                Entity.on();
+            }).toThrow();
+            expect(function () {
+                Entity.on(12);
+            }).toThrow();
+            expect(function () {
+                Entity.on('foo');
+            }).toThrow();
+            expect(function () {
+                Entity.on('foo', 123);
+            }).toThrow();
+            expect(function () {
+                Entity.on('foo', Function);
+            }).not.toThrow();
         });
 
         it('should support event "all"', function (done) {
-            Entity.on('all', function (payload) {
+            Entity.on('all', function (eventName, payload) {
+                expect(eventName).toBe('something-on');
                 expect(payload.name).toBe('iPhone');
                 done();
             });
@@ -82,11 +93,14 @@ describe('EventEmitter', function () {
         });
 
         it('should throw error when try run with bad params', function () {
-            expect(function () { Entity.once(); }).toThrow();
+            expect(function () {
+                Entity.once();
+            }).toThrow();
         });
 
         it('should support event "all"', function (done) {
-            Entity.once('all', function (payload) {
+            Entity.once('all', function (eventName, payload) {
+                expect(eventName).toBe('something-once');
                 expect(payload.name).toBe('iPad');
                 done();
             });
@@ -129,7 +143,9 @@ describe('EventEmitter', function () {
         });
 
         it('should not throw error when try run with bad params', function () {
-            expect(function () { Entity.off(); }).not.toThrow();
+            expect(function () {
+                Entity.off();
+            }).not.toThrow();
         });
     });
 
@@ -154,7 +170,9 @@ describe('EventEmitter', function () {
         });
 
         it('should throw error when try run with bad params', function () {
-            expect(function () { Entity.emit(); }).toThrow();
+            expect(function () {
+                Entity.emit();
+            }).toThrow();
         });
     });
 });
