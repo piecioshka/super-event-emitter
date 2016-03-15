@@ -62,8 +62,8 @@ describe('EventEmitter', function () {
                 done();
             });
 
-            Entity.emit('something', { name: 'iPhone' });
-        })
+            Entity.emit('something-on', { name: 'iPhone' });
+        });
     });
 
     describe('once', function () {
@@ -83,6 +83,15 @@ describe('EventEmitter', function () {
 
         it('should throw error when try run with bad params', function () {
             expect(function () { Entity.once(); }).toThrow();
+        });
+
+        it('should support event "all"', function (done) {
+            Entity.once('all', function (payload) {
+                expect(payload.name).toBe('iPad');
+                done();
+            });
+
+            Entity.emit('something-once', { name: 'iPad' });
         });
     });
 
