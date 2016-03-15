@@ -1,7 +1,7 @@
 {
     "name": "super-event-emitter",
     "description": "Super small and simple interpretation of popular event management.",
-    "version": "3.0.4",
+    "version": "3.0.5",
     "license": "MIT",
     "scripts": {
         "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
@@ -26,5 +26,10 @@
         "type": "git",
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
+    "files": [
+        "lib",
+        "package.json",
+        "README.md"
+    ],
     "main": "lib/EventEmitter.js"
 }
