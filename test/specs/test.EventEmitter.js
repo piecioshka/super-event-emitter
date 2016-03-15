@@ -55,6 +55,15 @@ describe('EventEmitter', function () {
             expect(function () { Entity.on('foo', 123); }).toThrow();
             expect(function () { Entity.on('foo', Function); }).not.toThrow();
         });
+
+        it('should support event "all"', function (done) {
+            Entity.on('all', function (payload) {
+                expect(payload.name).toBe('iPhone');
+                done();
+            });
+
+            Entity.emit('something', { name: 'iPhone' });
+        })
     });
 
     describe('once', function () {

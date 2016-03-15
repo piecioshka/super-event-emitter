@@ -83,6 +83,19 @@ instance.on('foo', function (data) {
 }, instance);
 ```
 
+Specials:
+
+* when set as `name` value `all` handler will be fired in any event
+
+```javascript
+instance.on('all', function (data) {
+    // will be fired, when emit any of event type
+});
+
+instance.emit('something');
+```
+
+
 #### `once( name, fn, ctx )` - The same as `on` but, after triggered event, destroy all listeners
 
 Example usage:
