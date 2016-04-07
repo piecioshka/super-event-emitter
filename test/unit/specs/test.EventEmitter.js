@@ -1,10 +1,8 @@
 'use strict';
 
-var EventEmitter = require('../../lib/EventEmitter');
+var EventEmitter = require('../../../lib/EventEmitter');
 
 describe('EventEmitter', function () {
-    'use strict';
-
     var Entity, spyFn;
 
     it('should exists', function () {
@@ -173,6 +171,22 @@ describe('EventEmitter', function () {
             expect(function () {
                 Entity.emit();
             }).toThrow();
+        });
+
+        it('should call handler in setup order', function () {
+            var point = 2;
+
+            Entity.on('order', function () {
+                point *= 2;
+            });
+
+            Entity.on('order', function () {
+                point += 2;
+            });
+
+            Entity.emit('order');
+
+            expect(point).toEqual(6);
         });
     });
 });

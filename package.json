@@ -1,10 +1,10 @@
 {
     "name": "super-event-emitter",
     "description": "Super small and simple interpretation of popular event management.",
-    "version": "3.0.7",
+    "version": "3.0.8",
     "license": "MIT",
     "scripts": {
-        "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json"
+        "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json"
     },
     "author": {
         "name": "Piotr Kowalski",
