@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 
-> Super small and simple interpretation of popular event management / aggregation.
+> Super small (2KB) and simple interpretation of popular event management / aggregation.
 
-I was created a blog post (in polish language) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
+I was created a blog post (in polish) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
 
 ## Install
 
@@ -134,11 +134,11 @@ instance.emit('foo', { name: 'bar' });
 
 For compatibility with any other APIs I was added some **aliases**:
 
- * `on` => `addEventListener`, `addListener`
- * `off` => `removeEventListener`, `removeListener`
+ * `on` => `addEventListener`, `addListener`, `bind`
+ * `off` => `removeEventListener`, `removeListener`, `unbind`
  * `emit` => `trigger`
 
-## Unit test
+## Unit tests
 
 How to run unit test (written in Jasmine):
 

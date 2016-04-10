@@ -1,9 +1,11 @@
 {
     "name": "super-event-emitter",
-    "description": "Super small and simple interpretation of popular event management.",
-    "version": "3.0.8",
+    "description": "Super small (2KB) and simple interpretation of popular event management.",
+    "version": "4.0.0",
     "license": "MIT",
     "scripts": {
+        "build": "webpack --profile",
+        "watch": "webpack -w",
         "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json"
     },
     "author": {
@@ -26,10 +28,13 @@
         "type": "git",
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
+    "devDependencies": {
+        "webpack": "^1.12.14"
+    },
     "files": [
-        "lib",
+        "dist",
         "package.json",
         "README.md"
     ],
-    "main": "lib/EventEmitter.js"
+    "main": "dist/super-event-emitter.min.js"
 }
