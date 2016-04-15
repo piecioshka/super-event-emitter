@@ -17,6 +17,23 @@ describe('EventEmitter', function () {
         spyFn = jasmine.createSpy('spyFn');
     });
 
+    describe('creation', function() {
+        it('should allow mixing with existing objects', function() {
+            var existing = {};
+            EventEmitter.mixin(existing);
+            existing.on('foo', spyFn);
+            existing.emit('foo');
+            expect(spyFn).toHaveBeenCalled();
+        });
+
+        it('should have basic methods defined', function() {
+            ['on', 'once', 'off', 'emit'].forEach(function(name) {
+                expect(Entity[name]).toBeDefined();
+                expect(Entity[name]).toEqual(jasmine.any(Function));
+            });
+        });
+    });
+
     describe('on', function () {
         it('should create empty list of listeners', function () {
             expect(Entity._listeners).toBe(undefined);
