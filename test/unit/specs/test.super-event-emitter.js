@@ -118,6 +118,7 @@ describe('EventEmitter', function () {
 
         it('should disable all listeners with passed name', function () {
             Entity.on('foo', spyFn);
+            Entity.on('foo', spyFn);
             Entity.off('foo');
             Entity.emit('foo');
 
