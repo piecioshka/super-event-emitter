@@ -53,6 +53,14 @@ describe('EventEmitter', function () {
                 expect(Entity[name]).toBe(EventEmitter.prototype.emit);
             });
         });
+
+        it('should encapsulate data', function() {
+            var Entity2 = EventEmitter.mixin({});
+            Entity.on('foo', function() {});
+            Entity2.on('foo', spyFn);
+            Entity.emit('foo');
+            expect(spyFn).not.toHaveBeenCalled();
+        });
     });
 
     describe('on', function () {
