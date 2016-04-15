@@ -38,6 +38,14 @@ function isArray(arg) {
     return toString(arg) === '[object Array]';
 }
 
+function ensureArray(potentialArray) {
+    if (!isArray(potentialArray)) {
+        return [];
+    } else {
+        return potentialArray;
+    }
+}
+
 // Main part.
 
 /**
@@ -56,9 +64,7 @@ var EventEmitter = {
         assert(isString(name), 'EventEmitter#on: `name` is not a string');
         assert(isFunction(fn), 'EventEmitter#on: `fn` is not a function');
 
-        if (!isArray(this._listeners)) {
-            this._listeners = [];
-        }
+        this._listeners = ensureArray(this._listeners);
 
         // Push to private lists of listeners.
         this._listeners.push({
@@ -97,11 +103,7 @@ var EventEmitter = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        if (!isArray(this._listeners)) {
-            this._listeners = [];
-        }
-
-        forEach(this._listeners, function (listener, index) {
+        forEach(ensureArray(this._listeners), function (listener, index) {
             if (name) {
                 if (listener.name === name) {
                     if (isFunction(fn)) {
@@ -128,11 +130,7 @@ var EventEmitter = {
     emit: function (name, params) {
         assert(isString(name), 'EventEmitter#emit: `name` is not a string');
 
-        if (!isArray(this._listeners)) {
-            this._listeners = [];
-        }
-
-        forEach(this._listeners, function (event) {
+        forEach(ensureArray(this._listeners), function (event) {
             if (event.name === name) {
                 event.fn.call(event.ctx, params);
             }
