@@ -103,21 +103,17 @@ var EventEmitter = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        this._listeners = ensureArray(this._listeners).filter(function (listener, index) {
-            if (name) {
-                if (listener.name === name) {
-                    if (isFunction(fn)) {
-                        if (listener.fn === fn) {
-                            return false;
-                        }
-                    } else {
-                        return false;
-                    }
-                }
+        this._listeners = !name ? [] : ensureArray(this._listeners).filter(function (listener, index) {
+            if (listener.name !== name) {
+                return true;
             } else {
-                return false;
+                if (isFunction(fn)) {
+                    return listener.fn !== fn;
+                } else {
+                    return false;
+                }
             }
-        }, this);
+        });
     },
 
     /**
