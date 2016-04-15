@@ -103,19 +103,19 @@ var EventEmitter = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        forEach(ensureArray(this._listeners), function (listener, index) {
+        this._listeners = ensureArray(this._listeners).filter(function (listener, index) {
             if (name) {
                 if (listener.name === name) {
                     if (isFunction(fn)) {
                         if (listener.fn === fn) {
-                            this._listeners.splice(index, 1);
+                            return false;
                         }
                     } else {
-                        this._listeners.splice(index, 1);
+                        return false;
                     }
                 }
             } else {
-                this._listeners.splice(index, 1);
+                return false;
             }
         }, this);
     },
