@@ -32,6 +32,21 @@ describe('EventEmitter', function () {
                 expect(Entity[name]).toEqual(jasmine.any(Function));
             });
         });
+
+        it('should have all aliases defined', function() {
+            ['addEventListener', 'addListener', 'bind'].forEach(function(name) {
+                expect(Entity[name]).toBeDefined();
+                expect(Entity[name]).toBe(EventEmitter.prototype.on);
+            });
+            ['removeEventListener', 'removeListener', 'unbind'].forEach(function(name) {
+                expect(Entity[name]).toBeDefined();
+                expect(Entity[name]).toBe(EventEmitter.prototype.off);
+            });
+            ['trigger'].forEach(function(name) {
+                expect(Entity[name]).toBeDefined();
+                expect(Entity[name]).toBe(EventEmitter.prototype.emit);
+            });
+        });
     });
 
     describe('on', function () {
