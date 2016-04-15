@@ -38,14 +38,6 @@ function isArray(arg) {
     return toString(arg) === '[object Array]';
 }
 
-function ensureArray(potentialArray) {
-    if (!isArray(potentialArray)) {
-        return [];
-    } else {
-        return potentialArray;
-    }
-}
-
 // Main part.
 
 var EventEmitterProto = {
@@ -59,8 +51,6 @@ var EventEmitterProto = {
     on: function (name, fn, ctx) {
         assert(isString(name), 'EventEmitter#on: `name` is not a string');
         assert(isFunction(fn), 'EventEmitter#on: `fn` is not a function');
-
-        this._listeners = ensureArray(this._listeners);
 
         // Push to private lists of listeners.
         this._listeners.push({
@@ -99,7 +89,7 @@ var EventEmitterProto = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        this._listeners = !name ? [] : ensureArray(this._listeners).filter(function (listener, index) {
+        this._listeners = !name ? [] : this._listeners.filter(function (listener, index) {
             if (listener.name !== name) {
                 return true;
             } else {
@@ -122,7 +112,7 @@ var EventEmitterProto = {
     emit: function (name, params) {
         assert(isString(name), 'EventEmitter#emit: `name` is not a string');
 
-        forEach(ensureArray(this._listeners), function (event) {
+        forEach(this._listeners, function (event) {
             if (event.name === name) {
                 event.fn.call(event.ctx, params);
             }
@@ -143,7 +133,9 @@ EventEmitterProto.trigger = EventEmitterProto.emit;
  * @typedef {Object} EventEmitter
  * @description Super small and simple interpretation of popular event management.
  */
-function EventEmitter() {}
+function EventEmitter() {
+    this._listeners = [];
+}
 
 EventEmitter.prototype = EventEmitterProto;
 

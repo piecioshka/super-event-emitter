@@ -61,15 +61,13 @@ describe('EventEmitter', function () {
             Entity.emit('foo');
             expect(spyFn).not.toHaveBeenCalled();
         });
+
+        it('should create empty list of listeners', function () {
+            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
+        });
     });
 
     describe('on', function () {
-        it('should create empty list of listeners', function () {
-            expect(Entity._listeners).toBe(undefined);
-            Entity.on('foo', spyFn);
-            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
-        });
-
         it('can add listener', function () {
             Entity.on('foo', spyFn);
             Entity.emit('foo');
@@ -122,12 +120,6 @@ describe('EventEmitter', function () {
     });
 
     describe('once', function () {
-        it('should create empty list of listeners', function () {
-            expect(Entity._listeners).toBe(undefined);
-            Entity.once('foo', spyFn);
-            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
-        });
-
         it('can add listener which will be run only one time', function () {
             Entity.once('foo', spyFn);
             Entity.emit('foo');
@@ -150,6 +142,15 @@ describe('EventEmitter', function () {
             });
 
             Entity.emit('something-once', { name: 'iPad' });
+        });
+
+        it('should not remove listeners list', function () {
+            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
+            expect(Entity._listeners.length).toBe(0);
+            Entity.once('foo', spyFn);
+            Entity.emit('foo');
+            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
+            expect(Entity._listeners.length).toBe(0);
         });
     });
 
@@ -196,6 +197,15 @@ describe('EventEmitter', function () {
             expect(function () {
                 Entity.off();
             }).not.toThrow();
+        });
+
+        it('should not remove listeners list', function () {
+            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
+            expect(Entity._listeners.length).toBe(0);
+            Entity.once('foo', spyFn);
+            Entity.emit('foo');
+            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
+            expect(Entity._listeners.length).toBe(0);
         });
     });
 
