@@ -188,5 +188,11 @@ describe('EventEmitter', function () {
 
             expect(point).toEqual(6);
         });
+
+        it('should allow passing params', function() {
+            Entity.on('foo', spyFn);
+            Entity.emit('foo', 'params');
+            expect(spyFn).toHaveBeenCalledWith('params');
+        });
     });
 });
