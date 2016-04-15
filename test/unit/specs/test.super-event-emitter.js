@@ -24,6 +24,14 @@ describe('EventEmitter', function () {
             expect(spyFn).toHaveBeenCalled();
         });
 
+        it('should create a new instance when called without `new`', function() {
+            var instance = EventEmitter();
+            var instance2 = EventEmitter();
+
+            expect(instance).not.toBe(instance2);
+            expect(instance.on).toBeDefined();
+        });
+
         it('should allow mixing with existing objects', function() {
             var existing = {};
             EventEmitter.mixin(existing);

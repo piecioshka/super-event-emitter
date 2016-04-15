@@ -142,6 +142,10 @@ EventEmitterProto.trigger = EventEmitterProto.emit;
  * @description Super small and simple interpretation of popular event management.
  */
 function EventEmitter() {
+    if (!(this instanceof EventEmitter)) {
+        return new EventEmitter();
+    }
+    
     this._listeners = [];
 }
 
