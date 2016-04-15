@@ -48,11 +48,7 @@ function ensureArray(potentialArray) {
 
 // Main part.
 
-/**
- * @typedef {Object} EventEmitter
- * @description Super small and simple interpretation of popular event management.
- */
-var EventEmitter = {
+var EventEmitterProto = {
     /**
      * Register listener on concrete name with specified handler.
      *
@@ -135,32 +131,37 @@ var EventEmitter = {
                 event.fn.call(event.ctx, name, params);
             }
         });
-    },
-
-    /**
-     * Mixin properties.
-     * Best way to setup EventEmitter on any object.
-     *
-     * @param {Object} target
-     */
-    mixin: function (target) {
-        for (var key in this) {
-            if (this.hasOwnProperty(key)) {
-                target[key] = this[key];
-            }
-        }
-
-        return target;
     }
 };
 
-
 // Aliases.
+EventEmitterProto.addEventListener = EventEmitterProto.addListener = EventEmitterProto.bind = EventEmitterProto.on;
+EventEmitterProto.removeEventListener = EventEmitterProto.removeListener = EventEmitterProto.unbind = EventEmitterProto.off;
+EventEmitterProto.trigger = EventEmitterProto.emit;
 
-EventEmitter.addEventListener = EventEmitter.addListener = EventEmitter.bind = EventEmitter.on;
-EventEmitter.removeEventListener = EventEmitter.removeListener = EventEmitter.unbind = EventEmitter.off;
-EventEmitter.trigger = EventEmitter.emit;
+/**
+ * @typedef {Object} EventEmitter
+ * @description Super small and simple interpretation of popular event management.
+ */
+function EventEmitter() {}
 
+EventEmitter.prototype = EventEmitterProto;
+
+/**
+ * Mixin properties.
+ * Best way to setup EventEmitter on any object.
+ *
+ * @param {Object} target
+ */
+EventEmitter.mixin = function (target) {
+    var emitter = new EventEmitter();
+
+    for (var key in emitter) {
+        target[key] = emitter[key];
+    }
+    
+    return target;
+};
 
 // Export `EventEmitter`.
 module.exports = EventEmitter;

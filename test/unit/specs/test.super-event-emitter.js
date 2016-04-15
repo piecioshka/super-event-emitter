@@ -8,8 +8,7 @@ describe('EventEmitter', function () {
     it('should exists', function () {
         expect(EventEmitter).toBeDefined();
         expect(EventEmitter).not.toBeNull();
-        expect(typeof EventEmitter).toBe('object');
-        expect(EventEmitter.prototype).toEqual(undefined);
+        expect(typeof EventEmitter).toBe('function');
     });
 
     beforeEach(function () {
@@ -18,6 +17,13 @@ describe('EventEmitter', function () {
     });
 
     describe('creation', function() {
+        it('should allow manual instantiation', function() {
+            var instance = new EventEmitter();
+            instance.on('foo', spyFn);
+            instance.emit('foo');
+            expect(spyFn).toHaveBeenCalled();
+        });
+
         it('should allow mixing with existing objects', function() {
             var existing = {};
             EventEmitter.mixin(existing);
