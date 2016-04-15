@@ -154,17 +154,11 @@ describe('EventEmitter', function () {
     });
 
     describe('emit', function () {
-        it('should disable all listeners with passed name', function () {
-            var isCalled = false;
-            Entity.on('foo', function () {
-                isCalled = true;
-            });
-
-            expect(isCalled).toBeFalsy();
-
+        it('should call all listeners with passed name', function () {
+            Entity.on('foo', spyFn);
+            expect(spyFn).not.toHaveBeenCalled();
             Entity.emit('foo');
-
-            expect(isCalled).toBeTruthy();
+            expect(spyFn).toHaveBeenCalled();
         });
 
         it('should throw error when try run with bad params', function () {
