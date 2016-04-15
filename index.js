@@ -59,6 +59,8 @@ var EventEmitterProto = {
             // If the context is not passed, use `this`.
             ctx: ctx || this
         });
+
+        return this;
     },
 
     /**
@@ -79,6 +81,8 @@ var EventEmitterProto = {
         };
 
         this.on(name, handle, ctx);
+
+        return this;
     },
 
     /**
@@ -100,6 +104,8 @@ var EventEmitterProto = {
                 }
             }
         });
+
+        return this;
     },
 
     /**
@@ -121,6 +127,8 @@ var EventEmitterProto = {
                 event.fn.call(event.ctx, name, params);
             }
         });
+
+        return this;
     }
 };
 

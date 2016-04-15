@@ -117,6 +117,12 @@ describe('EventEmitter', function () {
 
             Entity.emit('something-on', { name: 'iPhone' });
         });
+
+        it('should allow chaining onces', function() {
+            Entity.on('foo', spyFn).on('foo', spyFn);
+            Entity.emit('foo');
+            expect(spyFn).toHaveBeenCalledTimes(2);
+        });
     });
 
     describe('once', function () {
@@ -151,6 +157,12 @@ describe('EventEmitter', function () {
             Entity.emit('foo');
             expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
             expect(Entity._listeners.length).toBe(0);
+        });
+
+        it('should allow chaining onces', function() {
+            Entity.once('foo', spyFn).once('foo', spyFn);
+            Entity.emit('foo');
+            expect(spyFn).toHaveBeenCalledTimes(2);
         });
     });
 
@@ -207,6 +219,16 @@ describe('EventEmitter', function () {
             expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
             expect(Entity._listeners.length).toBe(0);
         });
+
+        it('should allow chaining offs', function() {
+            var spyFn2 = jasmine.createSpy('spyFn2');
+            Entity.on('foo', spyFn);
+            Entity.on('foo', spyFn2);
+            Entity.off('foo', spyFn).off('foo', spyFn2);
+            Entity.emit('foo');
+            expect(spyFn).not.toHaveBeenCalled();
+            expect(spyFn2).not.toHaveBeenCalled();
+        });
     });
 
     describe('emit', function () {
@@ -243,6 +265,12 @@ describe('EventEmitter', function () {
             Entity.on('foo', spyFn);
             Entity.emit('foo', 'params');
             expect(spyFn).toHaveBeenCalledWith('params');
+        });
+
+        it('should allow chaining emits', function() {
+            Entity.on('foo', spyFn);
+            Entity.emit('foo').emit('foo');
+            expect(spyFn).toHaveBeenCalledTimes(2);
         });
     });
 });
