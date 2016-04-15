@@ -135,6 +135,17 @@ describe('EventEmitter', function () {
             expect(spyFn).not.toHaveBeenCalled();
         });
 
+        it('should disable only listener with a specified callback', function() {
+            var callback = jasmine.createSpy('callback');
+            Entity.on('foo', callback);
+            Entity.on('foo', spyFn);
+            Entity.off('foo', callback);
+            Entity.emit('foo');
+
+            expect(spyFn).toHaveBeenCalled();
+            expect(callback).not.toHaveBeenCalled();
+        });
+
         it('should not throw error when try run with bad params', function () {
             expect(function () {
                 Entity.off();
