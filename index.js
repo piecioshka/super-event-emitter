@@ -167,5 +167,8 @@ EventEmitter.mixin = function (target) {
     return target;
 };
 
+// Allow crating new mixed in objects from the instance.
+EventEmitter.prototype.mixin = EventEmitter.mixin;
+
 // Export `EventEmitter`.
 module.exports = EventEmitter;

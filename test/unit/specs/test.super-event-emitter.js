@@ -40,6 +40,15 @@ describe('EventEmitter', function () {
             expect(spyFn).toHaveBeenCalled();
         });
 
+        it('should allow creating new mixins from the already mixed object', function() {
+            var anotherMixedObject = Entity.mixin({});
+            expect(anotherMixedObject.on).toBeDefined();
+
+            var instance = new EventEmitter();
+            var anotherInstance = instance.mixin({});
+            expect(anotherInstance.on).toBeDefined();
+        });
+
         it('should have basic methods defined', function() {
             ['on', 'once', 'off', 'emit'].forEach(function(name) {
                 expect(Entity[name]).toBeDefined();
