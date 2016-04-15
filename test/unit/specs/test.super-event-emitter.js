@@ -108,12 +108,6 @@ describe('EventEmitter', function () {
     });
 
     describe('off', function () {
-        it('should create empty list of listeners', function () {
-            expect(Entity._listeners).toBe(undefined);
-            Entity.off('foo', spyFn);
-            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
-        });
-
         it('should disable concrete listeners', function () {
             Entity.on('foo', spyFn);
             Entity.off('foo', spyFn);
@@ -148,12 +142,6 @@ describe('EventEmitter', function () {
     });
 
     describe('emit', function () {
-        it('should create empty list of listeners', function () {
-            expect(Entity._listeners).toBe(undefined);
-            Entity.emit('foo', spyFn);
-            expect(Object.prototype.toString.call(Entity._listeners)).toBe('[object Array]');
-        });
-
         it('should disable all listeners with passed name', function () {
             var isCalled = false;
             Entity.on('foo', function () {
