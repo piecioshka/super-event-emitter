@@ -11,6 +11,33 @@
 'use strict';
 
 // Helpers.
+var filterSupported = 'filter' in Array.prototype;
+var forEachSupported = 'forEach' in Array.prototype;
+
+function forEach(list, iterator) {
+    if (forEachSupported) {
+        list.forEach(iterator);
+    } else {
+        for (var i = 0; i < list.length; i += 1) {
+            iterator(list[i]);
+        }
+    }
+}
+
+function filter(list, iterator) {
+    if (filterSupported) {
+        return list.filter(iterator);
+    } else {
+        var result = [];
+        for (var i = 0; i < list.length; i += 1) {
+            var value = list[i];
+            if (iterator(value)) {
+                result.push(value);
+            }
+        }
+        return result;
+    }
+}
 
 function toString(arg) {
     return Object.prototype.toString.call(arg);
@@ -18,12 +45,6 @@ function toString(arg) {
 
 function assert(cond, msg) {
     if (!cond) throw new Error(msg || 'Assertion Error');
-}
-
-function forEach(list, iterator, context) {
-    context = context || {};
-    list = list || [];
-    Array.prototype.forEach.call(list, iterator.bind(context));
 }
 
 function isString(arg) {
@@ -93,7 +114,7 @@ var EventEmitterProto = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        this._listeners = !name ? [] : this._listeners.filter(function (listener, index) {
+        this._listeners = !name ? [] : filter(this._listeners, function (listener) {
             if (listener.name !== name) {
                 return true;
             } else {
