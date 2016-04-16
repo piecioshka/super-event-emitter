@@ -11,6 +11,33 @@
 'use strict';
 
 // Helpers.
+var filterSupported = 'filter' in Array.prototype;
+var forEachSupported = 'forEach' in Array.prototype;
+
+function forEach(list, iterator) {
+    if (forEachSupported) {
+        list.forEach(iterator);
+    } else {
+        for (var i = 0; i < list.length; i += 1) {
+            iterator(list[i]);
+        }
+    }
+}
+
+function filter(list, iterator) {
+    if (filterSupported) {
+        return list.filter(iterator);
+    } else {
+        var result = [];
+        for (var i = 0; i < list.length; i += 1) {
+            var value = list[i];
+            if (iterator(value)) {
+                result.push(value);
+            }
+        }
+        return result;
+    }
+}
 
 function toString(arg) {
     return Object.prototype.toString.call(arg);
@@ -18,12 +45,6 @@ function toString(arg) {
 
 function assert(cond, msg) {
     if (!cond) throw new Error(msg || 'Assertion Error');
-}
-
-function forEach(list, iterator, context) {
-    context = context || {};
-    list = list || [];
-    Array.prototype.forEach.call(list, iterator.bind(context));
 }
 
 function isString(arg) {
@@ -40,11 +61,7 @@ function isArray(arg) {
 
 // Main part.
 
-/**
- * @typedef {Object} EventEmitter
- * @description Super small and simple interpretation of popular event management.
- */
-var EventEmitter = {
+var EventEmitterProto = {
     /**
      * Register listener on concrete name with specified handler.
      *
@@ -56,10 +73,6 @@ var EventEmitter = {
         assert(isString(name), 'EventEmitter#on: `name` is not a string');
         assert(isFunction(fn), 'EventEmitter#on: `fn` is not a function');
 
-        if (!isArray(this._listeners)) {
-            this._listeners = [];
-        }
-
         // Push to private lists of listeners.
         this._listeners.push({
             name: name,
@@ -67,6 +80,8 @@ var EventEmitter = {
             // If the context is not passed, use `this`.
             ctx: ctx || this
         });
+
+        return this;
     },
 
     /**
@@ -87,6 +102,8 @@ var EventEmitter = {
         };
 
         this.on(name, handle, ctx);
+
+        return this;
     },
 
     /**
@@ -97,25 +114,19 @@ var EventEmitter = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        if (!isArray(this._listeners)) {
-            this._listeners = [];
-        }
-
-        forEach(this._listeners, function (listener, index) {
-            if (name) {
-                if (listener.name === name) {
-                    if (isFunction(fn)) {
-                        if (listener.fn === fn) {
-                            this._listeners.splice(index, 1);
-                        }
-                    } else {
-                        this._listeners.splice(index, 1);
-                    }
-                }
+        this._listeners = !name ? [] : filter(this._listeners, function (listener) {
+            if (listener.name !== name) {
+                return true;
             } else {
-                this._listeners.splice(index, 1);
+                if (isFunction(fn)) {
+                    return listener.fn !== fn;
+                } else {
+                    return false;
+                }
             }
-        }, this);
+        });
+
+        return this;
     },
 
     /**
@@ -128,10 +139,6 @@ var EventEmitter = {
     emit: function (name, params) {
         assert(isString(name), 'EventEmitter#emit: `name` is not a string');
 
-        if (!isArray(this._listeners)) {
-            this._listeners = [];
-        }
-
         forEach(this._listeners, function (event) {
             if (event.name === name) {
                 event.fn.call(event.ctx, params);
@@ -141,32 +148,48 @@ var EventEmitter = {
                 event.fn.call(event.ctx, name, params);
             }
         });
-    },
 
-    /**
-     * Mixin properties.
-     * Best way to setup EventEmitter on any object.
-     *
-     * @param {Object} target
-     */
-    mixin: function (target) {
-        for (var key in this) {
-            if (this.hasOwnProperty(key)) {
-                target[key] = this[key];
-            }
-        }
-
-        return target;
+        return this;
     }
 };
 
-
 // Aliases.
+EventEmitterProto.addEventListener = EventEmitterProto.addListener = EventEmitterProto.bind = EventEmitterProto.on;
+EventEmitterProto.removeEventListener = EventEmitterProto.removeListener = EventEmitterProto.unbind = EventEmitterProto.off;
+EventEmitterProto.trigger = EventEmitterProto.emit;
 
-EventEmitter.addEventListener = EventEmitter.addListener = EventEmitter.bind = EventEmitter.on;
-EventEmitter.removeEventListener = EventEmitter.removeListener = EventEmitter.unbind = EventEmitter.off;
-EventEmitter.trigger = EventEmitter.emit;
+/**
+ * @typedef {Object} EventEmitter
+ * @description Super small and simple interpretation of popular event management.
+ */
+function EventEmitter() {
+    if (!(this instanceof EventEmitter)) {
+        return new EventEmitter();
+    }
+    
+    this._listeners = [];
+}
 
+EventEmitter.prototype = EventEmitterProto;
+
+/**
+ * Mixin properties.
+ * Best way to setup EventEmitter on any object.
+ *
+ * @param {Object} target
+ */
+EventEmitter.mixin = function (target) {
+    var emitter = new EventEmitter();
+
+    for (var key in emitter) {
+        target[key] = emitter[key];
+    }
+    
+    return target;
+};
+
+// Allow crating new mixed in objects from the instance.
+EventEmitter.prototype.mixin = EventEmitter.mixin;
 
 // Export `EventEmitter`.
 module.exports = EventEmitter;
