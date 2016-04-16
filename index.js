@@ -1,6 +1,7 @@
 /**
  * @author Piotr Kowalski
  * @license The MIT License
+ * @description Super small (2KB) and simple interpretation of popular event management.
  * @example
  * EventEmitter.mixin(bar);
  * bar.on('foo', function () {
@@ -39,10 +40,6 @@ function filter(list, iterator) {
     }
 }
 
-function toString(arg) {
-    return Object.prototype.toString.call(arg);
-}
-
 function assert(cond, msg) {
     if (!cond) throw new Error(msg || 'Assertion Error');
 }
@@ -53,10 +50,6 @@ function isString(arg) {
 
 function isFunction(arg) {
     return typeof arg === 'function';
-}
-
-function isArray(arg) {
-    return toString(arg) === '[object Array]';
 }
 
 // Main part.
@@ -158,15 +151,11 @@ EventEmitterProto.addEventListener = EventEmitterProto.addListener = EventEmitte
 EventEmitterProto.removeEventListener = EventEmitterProto.removeListener = EventEmitterProto.unbind = EventEmitterProto.off;
 EventEmitterProto.trigger = EventEmitterProto.emit;
 
-/**
- * @typedef {Object} EventEmitter
- * @description Super small and simple interpretation of popular event management.
- */
 function EventEmitter() {
     if (!(this instanceof EventEmitter)) {
         return new EventEmitter();
     }
-    
+
     this._listeners = [];
 }
 
@@ -184,7 +173,7 @@ EventEmitter.mixin = function (target) {
     for (var key in emitter) {
         target[key] = emitter[key];
     }
-    
+
     return target;
 };
 

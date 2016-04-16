@@ -16,15 +16,15 @@ describe('EventEmitter', function () {
         spyFn = jasmine.createSpy('spyFn');
     });
 
-    describe('creation', function() {
-        it('should allow manual instantiation', function() {
+    describe('creation', function () {
+        it('should allow manual instantiation', function () {
             var instance = new EventEmitter();
             instance.on('foo', spyFn);
             instance.emit('foo');
             expect(spyFn).toHaveBeenCalled();
         });
 
-        it('should create a new instance when called without `new`', function() {
+        it('should create a new instance when called without `new`', function () {
             var instance = EventEmitter();
             var instance2 = EventEmitter();
 
@@ -32,7 +32,7 @@ describe('EventEmitter', function () {
             expect(instance.on).toBeDefined();
         });
 
-        it('should allow mixing with existing objects', function() {
+        it('should allow mixing with existing objects', function () {
             var existing = {};
             EventEmitter.mixin(existing);
             existing.on('foo', spyFn);
@@ -40,7 +40,7 @@ describe('EventEmitter', function () {
             expect(spyFn).toHaveBeenCalled();
         });
 
-        it('should allow creating new mixins from the already mixed object', function() {
+        it('should allow creating new mixins from the already mixed object', function () {
             var anotherMixedObject = Entity.mixin({});
             expect(anotherMixedObject.on).toBeDefined();
 
@@ -49,31 +49,32 @@ describe('EventEmitter', function () {
             expect(anotherInstance.on).toBeDefined();
         });
 
-        it('should have basic methods defined', function() {
-            ['on', 'once', 'off', 'emit'].forEach(function(name) {
+        it('should have basic methods defined', function () {
+            ['on', 'once', 'off', 'emit'].forEach(function (name) {
                 expect(Entity[name]).toBeDefined();
                 expect(Entity[name]).toEqual(jasmine.any(Function));
             });
         });
 
-        it('should have all aliases defined', function() {
-            ['addEventListener', 'addListener', 'bind'].forEach(function(name) {
+        it('should have all aliases defined', function () {
+            ['addEventListener', 'addListener', 'bind'].forEach(function (name) {
                 expect(Entity[name]).toBeDefined();
                 expect(Entity[name]).toBe(EventEmitter.prototype.on);
             });
-            ['removeEventListener', 'removeListener', 'unbind'].forEach(function(name) {
+            ['removeEventListener', 'removeListener', 'unbind'].forEach(function (name) {
                 expect(Entity[name]).toBeDefined();
                 expect(Entity[name]).toBe(EventEmitter.prototype.off);
             });
-            ['trigger'].forEach(function(name) {
+            ['trigger'].forEach(function (name) {
                 expect(Entity[name]).toBeDefined();
                 expect(Entity[name]).toBe(EventEmitter.prototype.emit);
             });
         });
 
-        it('should encapsulate data', function() {
+        it('should encapsulate data', function () {
             var Entity2 = EventEmitter.mixin({});
-            Entity.on('foo', function() {});
+            Entity.on('foo', function () {
+            });
             Entity2.on('foo', spyFn);
             Entity.emit('foo');
             expect(spyFn).not.toHaveBeenCalled();
@@ -135,7 +136,7 @@ describe('EventEmitter', function () {
             Entity.emit('something-on', { name: 'iPhone' });
         });
 
-        it('should allow chaining onces', function() {
+        it('should allow chaining onces', function () {
             Entity.on('foo', spyFn).on('foo', spyFn);
             Entity.emit('foo');
             expect(spyFn).toHaveBeenCalledTimes(2);
@@ -176,7 +177,7 @@ describe('EventEmitter', function () {
             expect(Entity._listeners.length).toBe(0);
         });
 
-        it('should allow chaining onces', function() {
+        it('should allow chaining onces', function () {
             Entity.once('foo', spyFn).once('foo', spyFn);
             Entity.emit('foo');
             expect(spyFn).toHaveBeenCalledTimes(2);
@@ -211,7 +212,7 @@ describe('EventEmitter', function () {
             expect(spyFn).not.toHaveBeenCalled();
         });
 
-        it('should disable only listener with a specified callback', function() {
+        it('should disable only listener with a specified callback', function () {
             var callback = jasmine.createSpy('callback');
             Entity.on('foo', callback);
             Entity.on('foo', spyFn);
@@ -237,7 +238,7 @@ describe('EventEmitter', function () {
             expect(Entity._listeners.length).toBe(0);
         });
 
-        it('should allow chaining offs', function() {
+        it('should allow chaining offs', function () {
             var spyFn2 = jasmine.createSpy('spyFn2');
             Entity.on('foo', spyFn);
             Entity.on('foo', spyFn2);
@@ -278,13 +279,13 @@ describe('EventEmitter', function () {
             expect(point).toEqual(6);
         });
 
-        it('should allow passing params', function() {
+        it('should allow passing params', function () {
             Entity.on('foo', spyFn);
             Entity.emit('foo', 'params');
             expect(spyFn).toHaveBeenCalledWith('params');
         });
 
-        it('should allow chaining emits', function() {
+        it('should allow chaining emits', function () {
             Entity.on('foo', spyFn);
             Entity.emit('foo').emit('foo');
             expect(spyFn).toHaveBeenCalledTimes(2);
