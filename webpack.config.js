@@ -13,7 +13,7 @@ module.exports = {
     output: {
         library: 'EventEmitter',
         libraryTarget: 'umd',
-
+        umdNamedDefine: true,
         filename: '[name].js',
         path: './dist/'
     },
