@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define("EventEmitter", [], factory);
 	else if(typeof exports === 'object')
 		exports["EventEmitter"] = factory();
 	else
@@ -122,12 +122,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        assert(isString(name), 'EventEmitter#on: `name` is not a string');
 	        assert(isFunction(fn), 'EventEmitter#on: `fn` is not a function');
 	
+	        // If the context is not passed, use `this`.
+	        ctx = ctx || this;
+	
 	        // Push to private lists of listeners.
 	        this._listeners.push({
 	            name: name,
 	            fn: fn,
-	            // If the context is not passed, use `this`.
-	            ctx: ctx || this
+	            ctx: ctx
 	        });
 	
 	        return this;
