@@ -12,11 +12,11 @@
 'use strict';
 
 // Helpers.
-var filterSupported = 'filter' in Array.prototype;
-var forEachSupported = 'forEach' in Array.prototype;
 
 function forEach(list, iterator) {
-    if (forEachSupported) {
+    var isForEachSupported = 'forEach' in Array.prototype;
+
+    if (isForEachSupported) {
         list.forEach(iterator);
     } else {
         for (var i = 0; i < list.length; i += 1) {
@@ -26,22 +26,27 @@ function forEach(list, iterator) {
 }
 
 function filter(list, iterator) {
-    if (filterSupported) {
+    var isFilterSupported = 'filter' in Array.prototype;
+
+    if (isFilterSupported) {
         return list.filter(iterator);
     } else {
         var result = [];
+
         for (var i = 0; i < list.length; i += 1) {
             var value = list[i];
+
             if (iterator(value)) {
                 result.push(value);
             }
         }
+
         return result;
     }
 }
 
 function assert(cond, msg) {
-    if (!cond) throw new Error(msg || 'Assertion Error');
+    if (!cond) throw new Error(msg);
 }
 
 function isString(arg) {
@@ -63,8 +68,8 @@ var EventEmitterProto = {
      * @param {Object} [ctx]
      */
     on: function (name, fn, ctx) {
-        assert(isString(name), 'EventEmitter#on: `name` is not a string');
-        assert(isFunction(fn), 'EventEmitter#on: `fn` is not a function');
+        assert(isString(name), 'EventEmitter#on: name is not a string');
+        assert(isFunction(fn), 'EventEmitter#on: fn is not a function');
 
         // If the context is not passed, use `this`.
         ctx = ctx || this;
@@ -88,15 +93,17 @@ var EventEmitterProto = {
      * @param {Object} [ctx]
      */
     once: function (name, fn, ctx) {
+        // If the context is not passed, use `this`.
         ctx = ctx || this;
 
         var self = this;
-        var handle = function () {
-            fn.apply(ctx, arguments);
-            self.off(name, handle);
-        };
 
-        this.on(name, handle, ctx);
+        function onHandler() {
+            fn.apply(ctx, arguments);
+            self.off(name, onHandler);
+        }
+
+        this.on(name, onHandler, ctx);
 
         return this;
     },
@@ -132,14 +139,17 @@ var EventEmitterProto = {
      * @param {Object} [params]
      */
     emit: function (name, params) {
-        assert(isString(name), 'EventEmitter#emit: `name` is not a string');
+        assert(isString(name), 'EventEmitter#emit: name is not a string');
 
         forEach(this._listeners, function (event) {
             if (event.name === name) {
                 event.fn.call(event.ctx, params);
             }
 
-            if (event.name === 'all') {
+            // Special behaviour for wildcard - invoke each event handler.
+            var isWildcard = (/^all|\*$/).test(event.name);
+
+            if (isWildcard) {
                 event.fn.call(event.ctx, name, params);
             }
         });
@@ -151,7 +161,7 @@ var EventEmitterProto = {
 // Aliases.
 EventEmitterProto.addEventListener = EventEmitterProto.addListener = EventEmitterProto.bind = EventEmitterProto.on;
 EventEmitterProto.removeEventListener = EventEmitterProto.removeListener = EventEmitterProto.unbind = EventEmitterProto.off;
-EventEmitterProto.trigger = EventEmitterProto.emit;
+EventEmitterProto.dispatchEventListener = EventEmitterProto.dispatchListener = EventEmitterProto.trigger = EventEmitterProto.emit;
 
 function EventEmitter() {
     if (!(this instanceof EventEmitter)) {
@@ -182,5 +192,5 @@ EventEmitter.mixin = function (target) {
 // Allow crating new mixed in objects from the instance.
 EventEmitter.prototype.mixin = EventEmitter.mixin;
 
-// Export `EventEmitter`.
+// Exports.
 module.exports = EventEmitter;

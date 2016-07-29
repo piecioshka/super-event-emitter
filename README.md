@@ -3,6 +3,7 @@
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 ![](https://img.shields.io/npm/dt/super-event-emitter.svg)
 [![Travis](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
+[![Coverage Status](https://coveralls.io/repos/github/piecioshka/super-event-emitter/badge.svg?branch=master)](https://coveralls.io/github/piecioshka/super-event-emitter?branch=master)
 
 > Super small (2KB) and simple interpretation of popular event management / aggregation.
 
@@ -16,7 +17,7 @@ $ npm install super-event-emitter
 
 ## Usage
 
-Simple literal object:
+### Demo #1: Simple literal object:
 
 ```javascript
 var foo = EventEmitter.mixin({});
@@ -28,7 +29,7 @@ foo.on('test', function () {
 foo.emit('test');
 ```
 
-Existed object: 
+### Demo #2: Existed object: 
 
 ```javascript
 var bar = {}; // Or any other object.
@@ -41,7 +42,7 @@ bar.on('test', function () {
 bar.emit('test');
 ```
 
-ECMAScript 6 example:
+### Demo #3: ECMAScript 2015 (ES6) example:
 
 ```javascript
 // File: test.js
@@ -77,7 +78,7 @@ Try to test this by: `node --harmony test.js`
  * `fn` - action which will be called when event will be triggered
  * `ctx` - object will be context of triggered action
 
-Example usage:
+Example:
 
 ```javascript
 instance.on('foo', function (payload) {
@@ -85,9 +86,9 @@ instance.on('foo', function (payload) {
 }, instance);
 ```
 
-Specials:
+Special behaviour:
 
-* when set as `name` value `all` handler will be fired in any event
+* when `name` = `all` (or `*`) register handler will be fired on any event
 
 ```javascript
 instance.on('all', function (name, payload) {
@@ -100,9 +101,11 @@ instance.emit('something', { foo: 1 });
 ```
 
 
-#### `once( name: string, fn: Function, ctx: Object )` - The same as `on` but, after triggered event, destroy all listeners
+#### `once( name: string, fn: Function, ctx: Object )`
 
-Example usage:
+The same as `on` but, after triggered event, destroy all listeners
+
+Example:
 
 ```javascript
 instance.once('foo', function (payload) {
@@ -115,7 +118,7 @@ instance.once('foo', function (payload) {
  * `name` - a string value representing the name of event
  * `fn` - action which will be removed from listeners
  
-Example usage:
+Example:
 
 ```javascript
 instance.off('foo', fooHandler);
@@ -126,7 +129,7 @@ instance.off('foo', fooHandler);
  * `name` - a string value representing the name of event
  * `params` - will be passed as first argument in called actions
 
-Example usage:
+Example:
 
 ```javascript
 instance.emit('foo', { name: 'bar' });
@@ -138,7 +141,7 @@ For compatibility with any other APIs I was added some **aliases**:
 
  * `on` => `addEventListener`, `addListener`, `bind`
  * `off` => `removeEventListener`, `removeListener`, `unbind`
- * `emit` => `trigger`
+ * `emit` => `dispatchEventListener`, `dispatchListener`, `trigger`
 
 ## Unit tests
 
