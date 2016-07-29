@@ -1,7 +1,7 @@
 {
     "name": "super-event-emitter",
     "description": "Super small (2KB) and simple interpretation of popular event management.",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "license": "MIT",
     "scripts": {
         "build": "webpack --profile",
@@ -41,5 +41,5 @@
         "package.json",
         "README.md"
     ],
-    "main": "dist/super-event-emitter.min.js"
+    "main": "./dist/super-event-emitter.min.js"
 }
