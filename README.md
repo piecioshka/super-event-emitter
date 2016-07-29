@@ -1,4 +1,4 @@
-# super-event-emitter
+# super-event-emitter ([npm](https://www.npmjs.com/package/super-event-emitter))
 
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 ![](https://img.shields.io/npm/dt/super-event-emitter.svg)
