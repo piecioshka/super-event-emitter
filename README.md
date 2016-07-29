@@ -1,6 +1,8 @@
 # super-event-emitter
 
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
+![](https://img.shields.io/npm/dt/super-event-emitter.svg)
+[![Travis](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
 
 > Super small (2KB) and simple interpretation of popular event management / aggregation.
 
@@ -9,7 +11,7 @@ I was created a blog post (in polish) about this tool: http://piecioshka.pl/blog
 ## Install
 
 ```
-npm install super-event-emitter
+$ npm install super-event-emitter
 ```
 
 ## Usage
@@ -69,7 +71,7 @@ Try to test this by: `node --harmony test.js`
 
 ## API
 
-#### `on( name, fn, ctx )`
+#### `on( name: string, fn: Function, ctx: Object )`
 
  * `name` - a string value representing the name of event
  * `fn` - action which will be called when event will be triggered
@@ -98,7 +100,7 @@ instance.emit('something', { foo: 1 });
 ```
 
 
-#### `once( name, fn, ctx )` - The same as `on` but, after triggered event, destroy all listeners
+#### `once( name: string, fn: Function, ctx: Object )` - The same as `on` but, after triggered event, destroy all listeners
 
 Example usage:
 
@@ -108,7 +110,7 @@ instance.once('foo', function (payload) {
 }, instance);
 ```
 
-#### `off( name, fn )`
+#### `off( name: string, fn: Function )`
 
  * `name` - a string value representing the name of event
  * `fn` - action which will be removed from listeners
@@ -119,7 +121,7 @@ Example usage:
 instance.off('foo', fooHandler);
 ```
 
-#### `emit( name, params )`
+#### `emit( name: string, params: Object )`
 
  * `name` - a string value representing the name of event
  * `params` - will be passed as first argument in called actions
@@ -143,7 +145,15 @@ For compatibility with any other APIs I was added some **aliases**:
 How to run unit test (written in Jasmine):
 
 ```
-npm test
+$ npm test
+```
+
+## Code coverage
+
+Use Istanbul to get code coverage ratio.
+
+```
+$ npm run coverage
 ```
 
 ## License
