@@ -7,7 +7,8 @@
         "build": "webpack --profile",
         "watch": "webpack -w",
         "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-        "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json"
+        "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
+        "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v"
     },
     "author": {
         "name": "Piotr Kowalski",
@@ -30,6 +31,7 @@
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
     "devDependencies": {
+        "coveralls": "^2.11.12",
         "istanbul": "^0.4.4",
         "jasmine": "^2.4.1",
         "webpack": "^1.12.14"
