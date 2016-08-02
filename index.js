@@ -1,7 +1,9 @@
 /**
- * @author Piotr Kowalski
- * @license The MIT License
- * @description Super small (2KB) and simple interpretation of popular event management.
+ * @author $AUTHOR$
+ * @name $NAME$
+ * @description $DESCRIPTION$
+ * @version $VERSION$
+ * @license $LICENSE$
  * @example
  * EventEmitter.mixin(bar);
  * bar.on('foo', function () {
@@ -9,7 +11,10 @@
  * });
  * bar.emit('foo');
  */
+
 'use strict';
+
+var pkg = require('./package.json');
 
 // Helpers.
 
@@ -191,6 +196,9 @@ EventEmitter.mixin = function (target) {
 
 // Allow crating new mixed in objects from the instance.
 EventEmitter.prototype.mixin = EventEmitter.mixin;
+
+// Put project version.
+EventEmitter.VERSION = pkg.version;
 
 // Exports.
 module.exports = EventEmitter;

@@ -3,17 +3,17 @@
     "description": "Super small (2KB) and simple interpretation of popular event management.",
     "version": "4.1.2",
     "license": "MIT",
+    "author": {
+        "name": "Piotr Kowalski",
+        "email": "piecioshka@gmail.com",
+        "url": "https://piecioshka.pl/"
+    },
     "scripts": {
         "build": "webpack --profile",
         "watch": "webpack -w",
         "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
         "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
         "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v"
-    },
-    "author": {
-        "name": "Piotr Kowalski",
-        "email": "piecioshka@gmail.com",
-        "url": "piecioshka.pl"
     },
     "keywords": [
         "super",
@@ -34,6 +34,8 @@
         "coveralls": "^2.11.12",
         "istanbul": "^0.4.4",
         "jasmine": "^2.4.1",
+        "json-loader": "^0.5.4",
+        "string-replace-loader": "^1.0.3",
         "webpack": "^1.12.14"
     },
     "files": [
