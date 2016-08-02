@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("EventEmitter", [], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
 		exports["EventEmitter"] = factory();
 	else
@@ -52,12 +52,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @author Piotr Kowalski
-	 * @license The MIT License
+	 * @author Piotr Kowalski <piecioshka@gmail.com> (https://piecioshka.pl/)
+	 * @name super-event-emitter
 	 * @description Super small (2KB) and simple interpretation of popular event management.
+	 * @version 4.1.3
+	 * @license MIT
 	 * @example
 	 * EventEmitter.mixin(bar);
 	 * bar.on('foo', function () {
@@ -65,7 +67,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * });
 	 * bar.emit('foo');
 	 */
+	
 	'use strict';
+	
+	var pkg = __webpack_require__(1);
 	
 	// Helpers.
 	
@@ -248,9 +253,64 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Allow crating new mixed in objects from the instance.
 	EventEmitter.prototype.mixin = EventEmitter.mixin;
 	
+	// Put project version.
+	EventEmitter.VERSION = pkg.version;
+	
 	// Exports.
 	module.exports = EventEmitter;
 
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "super-event-emitter",
+		"description": "Super small (2KB) and simple interpretation of popular event management.",
+		"version": "4.1.3",
+		"license": "MIT",
+		"author": {
+			"name": "Piotr Kowalski",
+			"email": "piecioshka@gmail.com",
+			"url": "https://piecioshka.pl/"
+		},
+		"scripts": {
+			"build": "webpack --profile",
+			"watch": "webpack -w",
+			"test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
+			"coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
+			"coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v"
+		},
+		"keywords": [
+			"super",
+			"event",
+			"emitter",
+			"mixin",
+			"on",
+			"off",
+			"emit",
+			"trigger",
+			"simple"
+		],
+		"repository": {
+			"type": "git",
+			"url": "http://github.com/piecioshka/super-event-emitter.git"
+		},
+		"devDependencies": {
+			"coveralls": "^2.11.12",
+			"istanbul": "^0.4.4",
+			"jasmine": "^2.4.1",
+			"json-loader": "^0.5.4",
+			"string-replace-loader": "^1.0.3",
+			"webpack": "^1.12.14"
+		},
+		"files": [
+			"dist",
+			"package.json",
+			"README.md"
+		],
+		"main": "./dist/super-event-emitter.min.js"
+	};
 
 /***/ }
 /******/ ])
