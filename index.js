@@ -5,6 +5,7 @@
  * @version $VERSION$
  * @license $LICENSE$
  * @example
+ * var bar = {}; // Or any other object.
  * EventEmitter.mixin(bar);
  * bar.on('foo', function () {
  *     console.log('foo event emitted');
