@@ -15,17 +15,6 @@
         "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
         "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v"
     },
-    "keywords": [
-        "super",
-        "event",
-        "emitter",
-        "mixin",
-        "on",
-        "off",
-        "emit",
-        "trigger",
-        "simple"
-    ],
     "repository": {
         "type": "git",
         "url": "http://github.com/piecioshka/super-event-emitter.git"
@@ -42,6 +31,17 @@
         "dist",
         "package.json",
         "README.md"
+    ],
+    "keywords": [
+        "super",
+        "event",
+        "emitter",
+        "mixin",
+        "on",
+        "off",
+        "emit",
+        "trigger",
+        "simple"
     ],
     "main": "./dist/super-event-emitter.min.js"
 }
