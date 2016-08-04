@@ -1,7 +1,7 @@
 {
     "name": "super-event-emitter",
     "description": "Super small (2KB) and simple interpretation of popular event management.",
-    "version": "4.1.3",
+    "version": "4.1.4",
     "license": "MIT",
     "author": {
         "name": "Piotr Kowalski",
@@ -29,6 +29,8 @@
     },
     "files": [
         "dist",
+        "lib",
+        "index.js",
         "package.json",
         "README.md"
     ],

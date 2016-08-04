@@ -54,13 +54,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * @author Piotr Kowalski <piecioshka@gmail.com> (https://piecioshka.pl/)
 	 * @name super-event-emitter
 	 * @description Super small (2KB) and simple interpretation of popular event management.
-	 * @version 4.1.3
+	 * @version 4.1.4
 	 * @license MIT
 	 * @example
+	 * var bar = {}; // Or any other object.
 	 * EventEmitter.mixin(bar);
 	 * bar.on('foo', function () {
 	 *     console.log('foo event emitted');
@@ -70,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
-	var pkg = __webpack_require__(1);
+	var pkg = __webpack_require__(2);
 	
 	// Helpers.
 	
@@ -261,13 +271,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		"name": "super-event-emitter",
 		"description": "Super small (2KB) and simple interpretation of popular event management.",
-		"version": "4.1.3",
+		"version": "4.1.4",
 		"license": "MIT",
 		"author": {
 			"name": "Piotr Kowalski",
@@ -281,17 +291,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			"coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
 			"coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v"
 		},
-		"keywords": [
-			"super",
-			"event",
-			"emitter",
-			"mixin",
-			"on",
-			"off",
-			"emit",
-			"trigger",
-			"simple"
-		],
 		"repository": {
 			"type": "git",
 			"url": "http://github.com/piecioshka/super-event-emitter.git"
@@ -306,8 +305,21 @@ return /******/ (function(modules) { // webpackBootstrap
 		},
 		"files": [
 			"dist",
+			"lib",
+			"index.js",
 			"package.json",
 			"README.md"
+		],
+		"keywords": [
+			"super",
+			"event",
+			"emitter",
+			"mixin",
+			"on",
+			"off",
+			"emit",
+			"trigger",
+			"simple"
 		],
 		"main": "./dist/super-event-emitter.min.js"
 	};
