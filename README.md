@@ -15,6 +15,12 @@ I was created a blog post (in polish) about this tool: http://piecioshka.pl/blog
 $ npm install super-event-emitter
 ```
 
+## TypeScript Definitions
+
+```
+$ typings install github:piecioshka/super-event-emitter/typings.json -GD
+```
+
 ## Usage
 
 ### Demo #1: Simple literal object:
