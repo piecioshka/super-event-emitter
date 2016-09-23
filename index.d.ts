@@ -6,34 +6,34 @@ declare module "super-event-emitter" {
 }
 
 declare class EventEmitter {
-    on(name: string, handler: Function, context: Object): EventEmitter;
+    on(name: string, handler: Function, context?: Object): EventEmitter;
 
-    bind(name: string, handler: Function, context: Object): EventEmitter;
+    bind(name: string, handler: Function, context?: Object): EventEmitter;
 
-    addListener(name: string, handler: Function, context: Object): EventEmitter;
+    addListener(name: string, handler: Function, context?: Object): EventEmitter;
 
-    addEventListener(name: string, handler: Function, context: Object): EventEmitter;
-
-
-    once(name: string, handler: Function, context: Object): EventEmitter;
+    addEventListener(name: string, handler: Function, context?: Object): EventEmitter;
 
 
-    off(name: string, handler: Function): EventEmitter;
-
-    unbind(name: string, handler: Function): EventEmitter;
-
-    removeListener(name: string, handler: Function): EventEmitter;
-
-    removeEventListener(name: string, handler: Function): EventEmitter;
+    once(name: string, handler: Function, context?: Object): EventEmitter;
 
 
-    emit(name: string, params: Object): EventEmitter;
+    off(name?: string, handler?: Function): EventEmitter;
 
-    trigger(name: string, params: Object): EventEmitter;
+    unbind(name?: string, handler?: Function): EventEmitter;
 
-    dispatchListener(name: string, params: Object): EventEmitter;
+    removeListener(name?: string, handler?: Function): EventEmitter;
 
-    dispatchEventListener(name: string, params: Object): EventEmitter;
+    removeEventListener(name?: string, handler?: Function): EventEmitter;
+
+
+    emit(name: string, params?: Object): EventEmitter;
+
+    trigger(name: string, params?: Object): EventEmitter;
+
+    dispatchListener(name: string, params?: Object): EventEmitter;
+
+    dispatchEventListener(name: string, params?: Object): EventEmitter;
 
 
     mixin(target: Object): Object;
