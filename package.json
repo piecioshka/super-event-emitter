@@ -29,7 +29,7 @@
     },
     "files": [
         "dist",
-        "lib",
+        "src",
         "index.js",
         "package.json",
         "README.md"
