@@ -4,11 +4,11 @@ module.exports = function () {
     return {
         files: [
             'package.json',
-            'src/*.js'
+            'src/**/*.js'
         ],
 
         tests: [
-            'test/unit/**/test.*.js'
+            'test/unit/specs/**/test.*.js'
         ],
 
         env: {
