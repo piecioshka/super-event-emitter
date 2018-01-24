@@ -283,6 +283,13 @@ describe('EventEmitter', function () {
 
                 Array.prototype.filter = cachedFilter;
             });
+
+            it('should remove listener for a .once event', function () {
+                Entity.once('foo', spyFn);
+                Entity.off('foo', spyFn);
+                Entity.emit('foo');
+                expect(spyFn).not.toHaveBeenCalled();
+            });
         });
 
         describe('method: emit', function () {
