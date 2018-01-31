@@ -20,12 +20,12 @@
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
     "devDependencies": {
-        "coveralls": "^2.11.12",
+        "coveralls": "^3.0.0",
         "istanbul": "^0.4.4",
         "jasmine": "^2.4.1",
         "json-loader": "^0.5.4",
         "string-replace-loader": "^1.0.3",
-        "webpack": "^1.12.14"
+        "webpack": "^3.10.0"
     },
     "files": [
         "dist",
