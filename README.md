@@ -1,5 +1,7 @@
 # super-event-emitter ([npm](https://www.npmjs.com/package/super-event-emitter))
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/piecioshka/super-event-emitter.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 ![](https://img.shields.io/npm/dt/super-event-emitter.svg)
 [![Travis](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
