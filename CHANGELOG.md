@@ -4,6 +4,12 @@
 
 ---
 
+## :trophy: [v4.1.6](https://github.com/piecioshka/super-event-emitter/compare/v4.1.5...v4.1.6) - 2018-03-08 :trophy:
+
+### Commits
+
+- [[`46250d0`](https://github.com/piecioshka/super-event-emitter/commit/46250d0c4a56d70dfb205ec4588be36516a9a9c5)] Remove support of Node.js v4.x **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.5](https://github.com/piecioshka/super-event-emitter/compare/v4.1.4...v4.1.5) - 2018-03-08 :trophy:
 
 ### Merged
