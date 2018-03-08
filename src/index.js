@@ -20,7 +20,7 @@ var pkg = require('../package.json');
 // Helpers.
 
 function forEach(list, iterator) {
-    var isForEachSupported = 'forEach' in Array.prototype;
+    var isForEachSupported = ('forEach' in Array.prototype);
 
     if (isForEachSupported) {
         list.forEach(iterator);
@@ -32,7 +32,7 @@ function forEach(list, iterator) {
 }
 
 function filter(list, iterator) {
-    var isFilterSupported = 'filter' in Array.prototype;
+    var isFilterSupported = ('filter' in Array.prototype);
 
     if (isFilterSupported) {
         return list.filter(iterator);
@@ -56,11 +56,11 @@ function assert(cond, msg) {
 }
 
 function isString(arg) {
-    return typeof arg === 'string';
+    return (typeof arg === 'string');
 }
 
 function isFunction(arg) {
-    return typeof arg === 'function';
+    return (typeof arg === 'function');
 }
 
 // Main part.
@@ -122,17 +122,19 @@ var EventEmitterProto = {
      * @param {Function} [fn]
      */
     off: function (name, fn) {
-        this._listeners = !name ? [] : filter(this._listeners, function (listener) {
-            if (listener.name !== name) {
-                return true;
-            } else {
-                if (isFunction(fn)) {
-                    return listener.fn !== fn;
+        this._listeners = !name
+            ? []
+            : filter(this._listeners, function (listener) {
+                if (listener.name !== name) {
+                    return true;
                 } else {
-                    return false;
+                    if (isFunction(fn)) {
+                        return listener.fn !== fn;
+                    } else {
+                        return false;
+                    }
                 }
-            }
-        });
+            });
 
         return this;
     },
@@ -165,9 +167,18 @@ var EventEmitterProto = {
 };
 
 // Aliases.
-EventEmitterProto.addEventListener = EventEmitterProto.addListener = EventEmitterProto.bind = EventEmitterProto.on;
-EventEmitterProto.removeEventListener = EventEmitterProto.removeListener = EventEmitterProto.unbind = EventEmitterProto.off;
-EventEmitterProto.dispatchEventListener = EventEmitterProto.dispatchListener = EventEmitterProto.trigger = EventEmitterProto.emit;
+EventEmitterProto.addEventListener
+    = EventEmitterProto.addListener
+    = EventEmitterProto.bind
+    = EventEmitterProto.on;
+EventEmitterProto.removeEventListener
+    = EventEmitterProto.removeListener
+    = EventEmitterProto.unbind
+    = EventEmitterProto.off;
+EventEmitterProto.dispatchEventListener
+    = EventEmitterProto.dispatchListener
+    = EventEmitterProto.trigger
+    = EventEmitterProto.emit;
 
 function EventEmitter() {
     if (!(this instanceof EventEmitter)) {
