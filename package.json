@@ -14,7 +14,7 @@
         "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
         "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
         "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v",
-        "version": "auto-changelog -p && git add CHANGELOG.md"
+        "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md"
     },
     "auto-changelog": {
         "commit-limit": false,

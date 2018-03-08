@@ -14,7 +14,7 @@ module.exports = {
         library: 'EventEmitter',
         libraryTarget: 'umd',
         filename: '[name].js',
-        path: './dist/'
+        path: __dirname + '/dist/'
     },
 
     devtool: 'source-map',
