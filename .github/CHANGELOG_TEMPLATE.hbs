@@ -1,0 +1,37 @@
+# Changelog
+
+> :bulb: Are you interested project history? Great! Look below for some details.
+
+---
+{{#each releases}}
+
+    {{#if href}}
+        ## :trophy: [{{title}}]({{href}}){{#if tag}} - {{isoDate}}{{/if}} :trophy:
+    {{else}}
+        ## :rocket: {{title}}{{#if tag}} - {{isoDate}}{{/if}} :rocket:
+    {{/if}}
+    {{#if merges}}
+
+        ### Merged
+
+        {{#each merges}}
+            - [{{#if href}}[`#{{id}}`]({{href}}){{/if}}] {{message}}
+        {{/each}}
+    {{/if}}
+    {{#if fixes}}
+
+        ### Fixed
+
+        {{#each fixes}}
+            - [{{#each fixes}}{{#if href}}[`#{{id}}`]({{href}}){{/if}}{{/each}}] {{commit.subject}}
+        {{/each}}
+    {{/if}}
+    {{#if commits}}
+
+        ### Commits
+
+        {{#each commits}}
+            - [{{#if href}}[`{{shorthash}}`]({{href}}){{/if}}] {{subject}} **({{author}})**
+        {{/each}}
+    {{/if}}
+{{/each}}
