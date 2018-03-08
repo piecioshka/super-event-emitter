@@ -13,13 +13,19 @@
         "watch": "webpack -w",
         "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
         "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-        "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v"
+        "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v",
+        "version": "auto-changelog -p && git add CHANGELOG.md"
+    },
+    "auto-changelog": {
+        "commit-limit": false,
+        "template": ".github/CHANGELOG_TEMPLATE.hbs"
     },
     "repository": {
         "type": "git",
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
     "devDependencies": {
+        "auto-changelog": "^1.4.5",
         "coveralls": "^3.0.0",
         "istanbul": "^0.4.4",
         "jasmine": "^2.4.1",
