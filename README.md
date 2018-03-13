@@ -8,7 +8,7 @@
 
 > :hammer: Super small (2KB) and simple interpretation of popular event management / aggregation.
 
-I was created a blog post (in polish) about this tool: http://piecioshka.pl/blog/2016/01/29/super-event-emitter.html
+I was created a blog post (in polish) about this tool: https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html
 
 ## Install
 
