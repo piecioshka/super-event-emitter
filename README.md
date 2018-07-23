@@ -1,25 +1,24 @@
-# super-event-emitter ([npm](https://www.npmjs.com/package/super-event-emitter))
+# super-event-emitter
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/piecioshka/super-event-emitter.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
-![](https://img.shields.io/npm/dt/super-event-emitter.svg)
-[![Travis](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
-[![Coverage Status](https://coveralls.io/repos/github/piecioshka/super-event-emitter/badge.svg?branch=master)](https://coveralls.io/github/piecioshka/super-event-emitter?branch=master)
+[![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/~piecioshka)
+[![travis](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
+[![dependencies](https://david-dm.org/piecioshka/super-event-emitter.svg)](https://gibhu.com/piecioshka/super-event-emitter)
+[![greenkeeper](https://badges.greenkeeper.io/piecioshka/super-event-emitter.svg)](https://greenkeeper.io/)
+[![coveralls](https://coveralls.io/repos/github/piecioshka/super-event-emitter/badge.svg?branch=master)](https://coveralls.io/github/piecioshka/super-event-emitter?branch=master)
 
-> :hammer: Super small (2KB) and simple interpretation of popular event management / aggregation.
+:hammer: Lightweight and simple interpretation of popular event management / aggregation
 
-I was created a blog post (in polish) about this tool: https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html
+## Installation
 
-## Install
-
-```
-$ npm install super-event-emitter
+```bash
+npm install super-event-emitter
 ```
 
 ## TypeScript Definitions
 
-```
-$ typings install github:piecioshka/super-event-emitter/typings.json -GD
+```bash
+typings install github:piecioshka/super-event-emitter/typings.json -GD
 ```
 
 ## Usage
@@ -81,9 +80,9 @@ Try to test this by: `node --harmony test.js`
 
 #### `on( name: string, fn: Function, ctx: Object )`
 
- * `name` - a string value representing the name of event
- * `fn` - action which will be called when event will be triggered
- * `ctx` - object will be context of triggered action
+* `name` - a string value representing the name of event
+* `fn` - action which will be called when event will be triggered
+* `ctx` - object will be context of triggered action
 
 Example:
 
@@ -107,7 +106,6 @@ instance.on('all', function (name, payload) {
 instance.emit('something', { foo: 1 });
 ```
 
-
 #### `once( name: string, fn: Function, ctx: Object )`
 
 The same as `on` but, after triggered event, destroy all listeners
@@ -122,9 +120,9 @@ instance.once('foo', function (payload) {
 
 #### `off( name: string, fn: Function )`
 
- * `name` - a string value representing the name of event
- * `fn` - action which will be removed from listeners
- 
+* `name` - a string value representing the name of event
+* `fn` - action which will be removed from listeners
+
 Example:
 
 ```javascript
@@ -133,8 +131,8 @@ instance.off('foo', fooHandler);
 
 #### `emit( name: string, params: Object )`
 
- * `name` - a string value representing the name of event
- * `params` - will be passed as first argument in called actions
+* `name` - a string value representing the name of event
+* `params` - will be passed as first argument in called actions
 
 Example:
 
@@ -146,24 +144,27 @@ instance.emit('foo', { name: 'bar' });
 
 For compatibility with any other APIs I was added some **aliases**:
 
- * `on` => `addEventListener`, `addListener`, `bind`
- * `off` => `removeEventListener`, `removeListener`, `unbind`
- * `emit` => `dispatchEventListener`, `dispatchListener`, `trigger`
+* `on` => `addEventListener`, `addListener`, `bind`
+* `off` => `removeEventListener`, `removeListener`, `unbind`
+* `emit` => `dispatchEventListener`, `dispatchListener`, `trigger`
+
+## Article
+
+I was created a blog post (in polish) about this tool:
+<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
 
 ## Unit tests
 
-How to run unit test (written in Jasmine):
-
-```
-$ npm test
+```bash
+npm test
 ```
 
 ## Code coverage
 
-Use Istanbul to get code coverage ratio.
+Check code coverage with [Istanbul](https://github.com/gotwarlost/istanbul):
 
-```
-$ npm run coverage
+```bash
+npm run coverage
 ```
 
 ## License
