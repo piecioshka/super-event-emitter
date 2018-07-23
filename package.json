@@ -1,6 +1,6 @@
 {
     "name": "super-event-emitter",
-    "description": "Super small (2KB) and simple interpretation of popular event management.",
+    "description": "Lightweight and simple interpretation of popular event management",
     "version": "4.1.6",
     "license": "MIT",
     "author": {
@@ -9,6 +9,8 @@
         "url": "https://piecioshka.pl/"
     },
     "scripts": {
+        "clear": "rm -rf coverage/ .nyc_output",
+        "clear:all": "rm -rf node_modules/ && npm run clear",
         "build": "webpack --profile",
         "watch": "webpack -w",
         "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
@@ -25,12 +27,12 @@
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
     "devDependencies": {
-        "auto-changelog": "^1.4.5",
-        "coveralls": "^3.0.0",
+        "auto-changelog": "^1.7.2",
+        "coveralls": "^3.0.2",
         "istanbul": "^0.4.4",
-        "jasmine": "^2.4.1",
+        "jasmine": "^3.1.0",
         "json-loader": "^0.5.4",
-        "string-replace-loader": "^1.0.3",
+        "string-replace-loader": "^2.1.1",
         "webpack": "^3.10.0"
     },
     "files": [
