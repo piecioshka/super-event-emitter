@@ -15,8 +15,6 @@
 
 'use strict';
 
-var pkg = require('../package.json');
-
 // Helpers.
 
 function forEach(list, iterator) {
@@ -210,7 +208,7 @@ EventEmitter.mixin = function (target) {
 EventEmitter.prototype.mixin = EventEmitter.mixin;
 
 // Put project version.
-EventEmitter.VERSION = pkg.version;
+EventEmitter.VERSION = "$PKG_VERSION$";
 
 // To import with destructuring assignment
 EventEmitter.EventEmitter = EventEmitter;

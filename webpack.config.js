@@ -1,50 +1,48 @@
 'use strict';
 
-var webpack = require('webpack');
-var pkg = require('./package.json');
-var author = pkg.author.name + ' <' + pkg.author.email + '> (' + pkg.author.url + ')';
+var readPkg = require('read-pkg');
 
-module.exports = {
-    entry: {
-        'super-event-emitter': './index.js',
-        'super-event-emitter.min': './index.js'
-    },
+module.exports = async () => {
+    var pkg = await readPkg();
+    var author = pkg.author.name + ' <' + pkg.author.email + '> (' + pkg.author.url + ')';
 
-    output: {
-        library: 'EventEmitter',
-        libraryTarget: 'umd',
-        filename: '[name].js',
-        path: __dirname + '/dist/'
-    },
+    return {
+        mode: 'none',
 
-    devtool: 'source-map',
+        entry: {
+            'super-event-emitter': './index.js',
+        },
 
-    module: {
-        loaders: [
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
-            },
-            {
-                test: /\.js$/,
-                loader: 'string-replace-loader',
-                query: {
-                    multiple: [
-                        { search: '$AUTHOR$', replace: author },
-                        { search: '$NAME$', replace: pkg.name },
-                        { search: '$DESCRIPTION$', replace: pkg.description },
-                        { search: '$VERSION$', replace: pkg.version },
-                        { search: '$LICENSE$', replace: pkg.license }
-                    ]
+        output: {
+            library: 'EventEmitter',
+            libraryTarget: 'umd',
+            filename: '[name].js',
+            path: __dirname + '/dist/'
+        },
+
+        devtool: 'source-map',
+
+        module: {
+            rules: [
+                {
+                    test: /\.json$/,
+                    loader: 'json-loader'
+                },
+                {
+                    test: /\.js$/,
+                    loader: 'string-replace-loader',
+                    query: {
+                        multiple: [
+                            { search: '$AUTHOR$', replace: author },
+                            { search: '$NAME$', replace: pkg.name },
+                            { search: '$DESCRIPTION$', replace: pkg.description },
+                            { search: '$VERSION$', replace: pkg.version },
+                            { search: '$PKG_VERSION$', replace: pkg.version },
+                            { search: '$LICENSE$', replace: pkg.license }
+                        ]
+                    }
                 }
-            }
-        ]
-    },
-
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            include: /\.min\.js$/,
-            minimize: true
-        })
-    ]
+            ]
+        }
+    };
 };
