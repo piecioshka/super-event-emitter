@@ -2,12 +2,17 @@
 
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 [![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/~piecioshka)
-[![travis](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
 [![dependencies](https://david-dm.org/piecioshka/super-event-emitter.svg)](https://github.com/piecioshka/super-event-emitter)
-[![greenkeeper](https://badges.greenkeeper.io/piecioshka/super-event-emitter.svg)](https://greenkeeper.io/)
+[![travis-ci](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
 [![coveralls](https://coveralls.io/repos/github/piecioshka/super-event-emitter/badge.svg?branch=master)](https://coveralls.io/github/piecioshka/super-event-emitter?branch=master)
+[![snyk](https://snyk.io/test/github/piecioshka/super-event-emitter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/piecioshka/super-event-emitter?targetFile=package.json)
 
 :hammer: Lightweight and simple interpretation of popular event management / aggregation
+
+## Article
+
+I was created a blog post (in polish) about this tool:
+<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
 
 ## Installation
 
@@ -15,15 +20,15 @@
 npm install super-event-emitter
 ```
 
-## TypeScript Definitions
-
-```bash
-typings install github:piecioshka/super-event-emitter/typings.json -GD
-```
-
 ## Usage
 
-### Demo #1: Simple literal object:
+```javascript
+const EventEmitter = require('super-event-emitter');
+// or
+const { EventEmitter } = require('super-event-emitter');
+```
+
+### Demo #1 — Simple literal object
 
 ```javascript
 var foo = EventEmitter.mixin({});
@@ -35,7 +40,7 @@ foo.on('test', function () {
 foo.emit('test');
 ```
 
-### Demo #2: Existed object: 
+### Demo #2 — Existed object
 
 ```javascript
 var bar = {}; // Or any other object.
@@ -48,24 +53,17 @@ bar.on('test', function () {
 bar.emit('test');
 ```
 
-### Demo #3: ECMAScript 2015 (ES6) example:
+### Demo #3 — ECMAScript 2015 (ES6) example
 
 ```javascript
 // File: test.js
-class Person {
-    constructor() {
-        EventEmitter.mixin(this);
-    }
-    
+class Person extends EventEmitter {
     say(message) {
         this.emit('say', message);
     }
 }
 
-// In some cases we have an error:
-// SyntaxError: Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
-// so use `var` statement.
-var p1 = new Person();
+const p1 = new Person();
 
 p1.on('say', function (message) {
     console.log(message);
@@ -92,7 +90,7 @@ instance.on('foo', function (payload) {
 }, instance);
 ```
 
-Special behaviour:
+Special behavior:
 
 * when `name` = `all` (or `*`) register handler will be fired on any event
 
@@ -148,10 +146,11 @@ For compatibility with any other APIs I was added some **aliases**:
 * `off` => `removeEventListener`, `removeListener`, `unbind`
 * `emit` => `dispatchEventListener`, `dispatchListener`, `trigger`
 
-## Article
+## TypeScript Definitions
 
-I was created a blog post (in polish) about this tool:
-<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
+```bash
+typings install github:piecioshka/super-event-emitter/typings.json -GD
+```
 
 ## Unit tests
 
@@ -160,8 +159,6 @@ npm test
 ```
 
 ## Code coverage
-
-Check code coverage with [Istanbul](https://github.com/gotwarlost/istanbul):
 
 ```bash
 npm run coverage
