@@ -1,7 +1,8 @@
 # super-event-emitter
 
+[![node version](https://img.shields.io/node/v/super-event-emitter.svg)](https://www.npmjs.com/piecioshka/super-event-emitter)
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
-[![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/~piecioshka)
+[![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/piecioshka/super-event-emitter)
 [![dependencies](https://david-dm.org/piecioshka/super-event-emitter.svg)](https://github.com/piecioshka/super-event-emitter)
 [![travis-ci](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
 [![coveralls](https://coveralls.io/repos/github/piecioshka/super-event-emitter/badge.svg?branch=master)](https://coveralls.io/github/piecioshka/super-event-emitter?branch=master)
@@ -28,10 +29,11 @@ const EventEmitter = require('super-event-emitter');
 const { EventEmitter } = require('super-event-emitter');
 ```
 
-### Demo #1 — Existed object
+### Demo #1 — Typical object literal
 
 ```javascript
-var bar = {}; // Or any other object.
+const bar = {};
+
 EventEmitter.mixin(bar);
 
 bar.on('test', function () {
@@ -41,7 +43,7 @@ bar.on('test', function () {
 bar.emit('test');
 ```
 
-### Demo #2 — ECMAScript 2015 (ES6) example
+### Demo #2 — Class API from ECMAScript 2015
 
 ```javascript
 class Person extends EventEmitter {
@@ -58,8 +60,6 @@ p1.on('say', function (message) {
 
 p1.say('I love cookie');
 ```
-
-Try to test this by: `node --harmony test.js`
 
 ## API
 
