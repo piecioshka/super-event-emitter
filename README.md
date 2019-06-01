@@ -11,7 +11,7 @@
 
 ## Article
 
-I was created a blog post (in polish) about this tool:
+I was created a blog post (in polish) about this tool:<br/>
 <https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
 
 ## Installation
@@ -28,19 +28,7 @@ const EventEmitter = require('super-event-emitter');
 const { EventEmitter } = require('super-event-emitter');
 ```
 
-### Demo #1 — Simple literal object
-
-```javascript
-var foo = EventEmitter.mixin({});
-
-foo.on('test', function () {
-    console.log('triggered!');
-}, this);
-
-foo.emit('test');
-```
-
-### Demo #2 — Existed object
+### Demo #1 — Existed object
 
 ```javascript
 var bar = {}; // Or any other object.
@@ -53,10 +41,9 @@ bar.on('test', function () {
 bar.emit('test');
 ```
 
-### Demo #3 — ECMAScript 2015 (ES6) example
+### Demo #2 — ECMAScript 2015 (ES6) example
 
 ```javascript
-// File: test.js
 class Person extends EventEmitter {
     say(message) {
         this.emit('say', message);
@@ -66,10 +53,10 @@ class Person extends EventEmitter {
 const p1 = new Person();
 
 p1.on('say', function (message) {
-    console.log(message);
+    console.log(message); // 'I love cookie'
 });
 
-p1.say('cookie');
+p1.say('I love cookie');
 ```
 
 Try to test this by: `node --harmony test.js`
@@ -138,7 +125,7 @@ Example:
 instance.emit('foo', { name: 'bar' });
 ```
 
----
+## Backward compatibility
 
 For compatibility with any other APIs I was added some **aliases**:
 
