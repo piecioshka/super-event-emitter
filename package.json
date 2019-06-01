@@ -9,13 +9,13 @@
         "url": "https://piecioshka.pl/"
     },
     "scripts": {
-        "clear": "rm -rf coverage/ .nyc_output",
+        "clear": "rm -rf coverage/ .nyc_output/",
         "clear:all": "rm -rf node_modules/ && npm run clear",
         "build": "webpack --profile",
         "watch": "webpack -w",
-        "test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-        "coverage": "istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-        "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls -v",
+        "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json",
+        "coverage": "nyc npm run test && nyc report --reporter=html",
+        "coveralls": "nyc npm run test && nyc report --reporter=text-lcov | coveralls -v",
         "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md"
     },
     "auto-changelog": {
@@ -29,9 +29,9 @@
     "devDependencies": {
         "auto-changelog": "^1.11.0",
         "coveralls": "^3.0.3",
-        "istanbul": "^0.4.4",
         "jasmine": "^3.3.1",
         "json-loader": "^0.5.4",
+        "nyc": "^14.1.1",
         "string-replace-loader": "^2.1.1",
         "webpack": "^4.29.6"
     },
@@ -46,6 +46,7 @@
         "super",
         "event",
         "emitter",
+        "observer",
         "mixin",
         "on",
         "off",

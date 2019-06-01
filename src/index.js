@@ -212,5 +212,8 @@ EventEmitter.prototype.mixin = EventEmitter.mixin;
 // Put project version.
 EventEmitter.VERSION = pkg.version;
 
+// To import with destructuring assignment
+EventEmitter.EventEmitter = EventEmitter;
+
 // Exports.
 module.exports = EventEmitter;

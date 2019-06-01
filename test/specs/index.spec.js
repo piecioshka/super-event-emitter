@@ -1,6 +1,6 @@
 'use strict';
 
-var EventEmitter = require('../../../src/index');
+var EventEmitter = require('../../src/index');
 
 describe('EventEmitter', function () {
     var Entity, spyFn;
