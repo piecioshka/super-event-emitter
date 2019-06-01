@@ -28,7 +28,7 @@
         "url": "http://github.com/piecioshka/super-event-emitter.git"
     },
     "engines": {
-        "node": ">=5"
+        "node": ">=6"
     },
     "devDependencies": {
         "auto-changelog": "^1.11.0",
