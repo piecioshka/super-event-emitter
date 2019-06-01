@@ -7,7 +7,7 @@
 		exports["EventEmitter"] = factory();
 	else
 		root["EventEmitter"] = factory();
-})(typeof self !== 'undefined' ? self : this, function() {
+})(window, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -46,12 +46,32 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -68,6 +88,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
+/******/
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -91,8 +112,8 @@ module.exports = __webpack_require__(1);
 /**
  * @author Piotr Kowalski <piecioshka@gmail.com> (https://piecioshka.pl/)
  * @name super-event-emitter
- * @description Super small (2KB) and simple interpretation of popular event management.
- * @version 4.1.6
+ * @description Lightweight and simple interpretation of popular event management
+ * @version 4.1.7
  * @license MIT
  * @example
  * var bar = {}; // Or any other object.
@@ -104,8 +125,6 @@ module.exports = __webpack_require__(1);
  */
 
 
-
-var pkg = __webpack_require__(2);
 
 // Helpers.
 
@@ -300,17 +319,14 @@ EventEmitter.mixin = function (target) {
 EventEmitter.prototype.mixin = EventEmitter.mixin;
 
 // Put project version.
-EventEmitter.VERSION = pkg.version;
+EventEmitter.VERSION = "4.1.7";
+
+// To import with destructuring assignment
+EventEmitter.EventEmitter = EventEmitter;
 
 // Exports.
 module.exports = EventEmitter;
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = {"name":"super-event-emitter","description":"Super small (2KB) and simple interpretation of popular event management.","version":"4.1.6","license":"MIT","author":{"name":"Piotr Kowalski","email":"piecioshka@gmail.com","url":"https://piecioshka.pl/"},"scripts":{"build":"webpack --profile","watch":"webpack -w","test":"jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json","coverage":"istanbul cover jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json","coveralls":"npm run coverage && cat ./coverage/lcov.info | coveralls -v","version":"npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md"},"auto-changelog":{"commit-limit":false,"template":".github/CHANGELOG_TEMPLATE.hbs"},"repository":{"type":"git","url":"http://github.com/piecioshka/super-event-emitter.git"},"devDependencies":{"auto-changelog":"^1.4.5","coveralls":"^3.0.0","istanbul":"^0.4.4","jasmine":"^2.4.1","json-loader":"^0.5.4","string-replace-loader":"^1.0.3","webpack":"^3.10.0"},"files":["dist","src","index.js","package.json","README.md"],"keywords":["super","event","emitter","mixin","on","off","emit","trigger","simple"],"main":"./dist/super-event-emitter.min.js"}
 
 /***/ })
 /******/ ]);

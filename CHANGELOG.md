@@ -4,6 +4,18 @@
 
 ---
 
+## :trophy: [v4.1.7](https://github.com/piecioshka/super-event-emitter/compare/v4.1.6...v4.1.7) - 2019-06-01 :trophy:
+
+### Fixed
+
+- [[`#9`](https://github.com/piecioshka/super-event-emitter/issues/9)] Update link to article. Fixes #9
+
+### Commits
+
+- [[`4115220`](https://github.com/piecioshka/super-event-emitter/commit/4115220f468721e0f8249fcbf37091557cbc6e09)] Update deps **(Piotr Kowalski)**
+- [[`8dbe82b`](https://github.com/piecioshka/super-event-emitter/commit/8dbe82ba69642bda6880feafd2087e385e36ef19)] Upgrade deps **(Piotr Kowalski)**
+- [[`49e52d3`](https://github.com/piecioshka/super-event-emitter/commit/49e52d38022c87bc397d4ee5d2ef059cc5c7ce0c)] Code Coverage: Use nyc instead of istanbul **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.6](https://github.com/piecioshka/super-event-emitter/compare/v4.1.5...v4.1.6) - 2018-03-08 :trophy:
 
 ### Commits
@@ -23,7 +35,7 @@
 
 - [[`a78f345`](https://github.com/piecioshka/super-event-emitter/commit/a78f345b619679675a84d0cf5026df99557fd783)] Add package-lock.json **(Piotr Kowalski)**
 - [[`5471faa`](https://github.com/piecioshka/super-event-emitter/commit/5471faa06aa85456678b595beec0a63e4cd2a0e3)] Reformat code (set max 80 chars per line) **(Piotr Kowalski)**
-- [[`985503c`](https://github.com/piecioshka/super-event-emitter/commit/985503c5fa43c67e0dc358b10e8da1b9cf0f7e1a)] Fixed paths **(Piotr Kowalski)**
+- [[`36b7bc5`](https://github.com/piecioshka/super-event-emitter/commit/36b7bc5be18f5d2933583cc904311007f642af4a)] Set state &quot;not reuired&quot; in some arguments **(Piotr Kowalski)**
 
 ## :trophy: [v4.1.4](https://github.com/piecioshka/super-event-emitter/compare/v4.1.3...v4.1.4) - 2016-08-04 :trophy:
 
@@ -63,9 +75,9 @@
 
 ### Commits
 
-- [[`05e7643`](https://github.com/piecioshka/super-event-emitter/commit/05e7643d0192145d49f84239c75d01dac04901d9)] Add Array#forEach and Array#filter polyfills **(Mateusz Kocz)**
-- [[`929bfbd`](https://github.com/piecioshka/super-event-emitter/commit/929bfbdfadd38819b84d6adbd475824e3e3dd094)] Allow crating new mixed in objects from the instance **(Mateusz Kocz)**
-- [[`7dfd066`](https://github.com/piecioshka/super-event-emitter/commit/7dfd066b4a7f268b20c5b12d1c1e6fcf938bff74)] Allow &#x60;new&#x60;-less instantiation and prevent a global object leak **(Mateusz Kocz)**
+- [[`7f48948`](https://github.com/piecioshka/super-event-emitter/commit/7f4894883fdb3dd297f758199df162383d51fb06)] Allow manual instantiation of the Emitter **(Mateusz Kocz)**
+- [[`0324f36`](https://github.com/piecioshka/super-event-emitter/commit/0324f362d4927a6120c8f45b9c82b1ad9ccc6567)] Remove the need of the runtime _listeners existence check **(Mateusz Kocz)**
+- [[`390ae4e`](https://github.com/piecioshka/super-event-emitter/commit/390ae4e8319abbfa14e83432ce481e1a3281fc07)] Allow methods chaining **(Mateusz Kocz)**
 
 ## :trophy: [v4.0.0](https://github.com/piecioshka/super-event-emitter/compare/v3.0.8...v4.0.0) - 2016-04-10 :trophy:
 
