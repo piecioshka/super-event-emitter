@@ -1,4 +1,10 @@
 language: node_js
+
+os:
+  - linux
+  - osx
+  - windows
+
 node_js:
   - "12"
   - "11"
@@ -8,3 +14,6 @@ node_js:
   - "7"
   - "6"
   - "5"
+
+after_script:
+  - npm run coveralls
