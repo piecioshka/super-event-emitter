@@ -65,7 +65,7 @@ function isFunction(arg) {
  * Add an event listener. Note that this method is not part of the EventEmitter
  *  prototype to avoid polluting the namespace.
  *
- * @private
+ * @access private
  * @param {string} name - Name of event to listen to.
  * @param {Function} fn - The function to represent this listener. Used for
  *  comparison when removing the listener.
@@ -73,7 +73,7 @@ function isFunction(arg) {
  *  emitted. This can differ if e.g. clean-up is needed. ".once" uses this.
  * @param {Object} [ctx] - The context to use as "this" for the listener.
  */
-function _addListener(name, fn, run, ctx) {
+function addListener(name, fn, run, ctx) {
     assert(isString(name), 'EventEmitter#on: name is not a string');
     assert(isFunction(fn), 'EventEmitter#on: fn is not a function');
 
@@ -87,8 +87,6 @@ function _addListener(name, fn, run, ctx) {
         run: run,
         ctx: ctx
     });
-
-    return this;
 }
 
 // Main part.
@@ -103,8 +101,8 @@ var EventEmitterProto = {
      */
     on: function (name, fn, ctx) {
         // For "on" functions, the runner is the same as the underlying
-        //  function. See "once" for when the distinction matters.
-        _addListener.call(this, name, fn, fn, ctx);
+        // function. See "once" for when the distinction matters.
+        addListener.call(this, name, fn, fn, ctx);
         return this;
     },
 
@@ -129,7 +127,7 @@ var EventEmitterProto = {
             self.off(name, fn);
         }
 
-        _addListener.call(this, name, fn, onHandler, ctx);
+        addListener.call(this, name, fn, onHandler, ctx);
 
         return this;
     },
