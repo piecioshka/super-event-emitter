@@ -113,7 +113,7 @@ module.exports = __webpack_require__(1);
  * @author Piotr Kowalski <piecioshka@gmail.com> (https://piecioshka.pl/)
  * @name super-event-emitter
  * @description Lightweight and simple interpretation of popular event management
- * @version 4.1.8
+ * @version 4.1.9
  * @license MIT
  * @example
  * var bar = {}; // Or any other object.
@@ -172,6 +172,34 @@ function isFunction(arg) {
     return (typeof arg === 'function');
 }
 
+/**
+ * Add an event listener. Note that this method is not part of the EventEmitter
+ *  prototype to avoid polluting the namespace.
+ *
+ * @access private
+ * @param {string} name - Name of event to listen to.
+ * @param {Function} fn - The function to represent this listener. Used for
+ *  comparison when removing the listener.
+ * @param {Function} run - The actual function to run when the named event is
+ *  emitted. This can differ if e.g. clean-up is needed. ".once" uses this.
+ * @param {Object} [ctx] - The context to use as "this" for the listener.
+ */
+function addListener(name, fn, run, ctx) {
+    assert(isString(name), 'EventEmitter#on: name is not a string');
+    assert(isFunction(fn), 'EventEmitter#on: fn is not a function');
+
+    // If the context is not passed, use `this`.
+    ctx = ctx || this;
+
+    // Push to private lists of listeners.
+    this._listeners.push({
+        name: name,
+        fn: fn,
+        run: run,
+        ctx: ctx
+    });
+}
+
 // Main part.
 
 var EventEmitterProto = {
@@ -183,19 +211,9 @@ var EventEmitterProto = {
      * @param {Object} [ctx]
      */
     on: function (name, fn, ctx) {
-        assert(isString(name), 'EventEmitter#on: name is not a string');
-        assert(isFunction(fn), 'EventEmitter#on: fn is not a function');
-
-        // If the context is not passed, use `this`.
-        ctx = ctx || this;
-
-        // Push to private lists of listeners.
-        this._listeners.push({
-            name: name,
-            fn: fn,
-            ctx: ctx
-        });
-
+        // For "on" functions, the runner is the same as the underlying
+        // function. See "once" for when the distinction matters.
+        addListener.call(this, name, fn, fn, ctx);
         return this;
     },
 
@@ -213,12 +231,14 @@ var EventEmitterProto = {
 
         var self = this;
 
+        // Here, we use a different runner function than the added listener.
+        // This enables us to remove the listener after the function runs.
         function onHandler() {
             fn.apply(ctx, arguments);
-            self.off(name, onHandler);
+            self.off(name, fn);
         }
 
-        this.on(name, onHandler, ctx);
+        addListener.call(this, name, fn, onHandler, ctx);
 
         return this;
     },
@@ -260,14 +280,14 @@ var EventEmitterProto = {
 
         forEach(this._listeners, function (event) {
             if (event.name === name) {
-                event.fn.call(event.ctx, params);
+                event.run.call(event.ctx, params);
             }
 
             // Special behaviour for wildcard - invoke each event handler.
             var isWildcard = (/^all|\*$/).test(event.name);
 
             if (isWildcard) {
-                event.fn.call(event.ctx, name, params);
+                event.run.call(event.ctx, name, params);
             }
         });
 
@@ -319,7 +339,7 @@ EventEmitter.mixin = function (target) {
 EventEmitter.prototype.mixin = EventEmitter.mixin;
 
 // Put project version.
-EventEmitter.VERSION = "4.1.8";
+EventEmitter.VERSION = "4.1.9";
 
 // To import with destructuring assignment
 EventEmitter.EventEmitter = EventEmitter;

@@ -4,6 +4,12 @@
 
 ---
 
+## :trophy: [v4.1.9](https://github.com/piecioshka/super-event-emitter/compare/v4.1.8...v4.1.9) - 2019-06-04 :trophy:
+
+### Merged
+
+- [[`#5`](https://github.com/piecioshka/super-event-emitter/pull/5)] Fix .off for one-time listeners
+
 ## :trophy: [v4.1.8](https://github.com/piecioshka/super-event-emitter/compare/v4.1.7...v4.1.8) - 2019-06-01 :trophy:
 
 ### Commits
