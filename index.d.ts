@@ -5,40 +5,29 @@ declare module "super-event-emitter" {
     export = EventEmitter;
 }
 
+type Handler = (payload?: any) => void;
+
 declare class EventEmitter {
-    on(name: string, handler: Function, context?: Object): EventEmitter;
+    on(name: string, handler: Handler, context?: any): EventEmitter;
+    bind(name: string, handler: Handler, context?: any): EventEmitter;
+    addListener(name: string, handler: Handler, context?: any): EventEmitter;
+    addEventListener(name: string, handler: Handler, context?: any): EventEmitter;
 
-    bind(name: string, handler: Function, context?: Object): EventEmitter;
+    once(name: string, handler: Handler, context?: Object): EventEmitter;
 
-    addListener(name: string, handler: Function, context?: Object): EventEmitter;
+    off(name?: string, handler?: Handler): EventEmitter;
+    unbind(name?: string, handler?: Handler): EventEmitter;
+    removeListener(name?: string, handler?: Handler): EventEmitter;
+    removeEventListener(name?: string, handler?: Handler): EventEmitter;
 
-    addEventListener(name: string, handler: Function, context?: Object): EventEmitter;
+    emit(name: string, params?: any): EventEmitter;
+    trigger(name: string, params?: any): EventEmitter;
+    dispatchListener(name: string, params?: any): EventEmitter;
+    dispatchEventListener(name: string, params?: any): EventEmitter;
 
+    mixin(target: T): T;
 
-    once(name: string, handler: Function, context?: Object): EventEmitter;
-
-
-    off(name?: string, handler?: Function): EventEmitter;
-
-    unbind(name?: string, handler?: Function): EventEmitter;
-
-    removeListener(name?: string, handler?: Function): EventEmitter;
-
-    removeEventListener(name?: string, handler?: Function): EventEmitter;
-
-
-    emit(name: string, params?: Object): EventEmitter;
-
-    trigger(name: string, params?: Object): EventEmitter;
-
-    dispatchListener(name: string, params?: Object): EventEmitter;
-
-    dispatchEventListener(name: string, params?: Object): EventEmitter;
-
-
-    mixin(target: Object): Object;
-
-    static mixin(target: Object): Object;
+    static mixin(target: T): T;
 
     static VERSION: string;
 }

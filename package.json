@@ -32,12 +32,12 @@
     },
     "devDependencies": {
         "auto-changelog": "^1.14.1",
-        "coveralls": "^3.0.5",
+        "coveralls": "^3.0.6",
         "jasmine": "^3.4.0",
         "json-loader": "^0.5.7",
         "nyc": "^14.1.1",
         "string-replace-loader": "^2.2.0",
-        "webpack": "^4.38.0",
+        "webpack": "^4.39.1",
         "webpack-cli": "^3.3.6"
     },
     "files": [
@@ -68,5 +68,6 @@
         "trigger",
         "simple"
     ],
-    "main": "./dist/super-event-emitter.js"
+    "main": "./dist/super-event-emitter.js",
+    "types": "./index.d.ts"
 }
