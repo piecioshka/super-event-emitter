@@ -14,7 +14,7 @@
         "prebuild": "rm -rf dist/",
         "build": "webpack --profile",
         "watch": "webpack -w",
-        "test": "jasmine JASMINE_CONFIG_PATH=test/jasmine.json",
+        "test": "jasmine test/specs/**/**.js",
         "coverage": "nyc npm run test && nyc report --reporter=html",
         "coveralls": "nyc npm run test && nyc report --reporter=text-lcov | coveralls -v",
         "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md"
