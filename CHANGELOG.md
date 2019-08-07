@@ -4,19 +4,11 @@
 
 ---
 
-## :trophy: [v4.1.9](https://github.com/piecioshka/super-event-emitter/compare/v4.1.8...v4.1.9) - 2019-06-04 :trophy:
+## :trophy: [v4.1.10](https://github.com/piecioshka/super-event-emitter/compare/v4.1.6...v4.1.10) - 2019-08-07 :trophy:
 
 ### Merged
 
 - [[`#5`](https://github.com/piecioshka/super-event-emitter/pull/5)] Fix .off for one-time listeners
-
-## :trophy: [v4.1.8](https://github.com/piecioshka/super-event-emitter/compare/v4.1.7...v4.1.8) - 2019-06-01 :trophy:
-
-### Commits
-
-- [[`c4e3e71`](https://github.com/piecioshka/super-event-emitter/commit/c4e3e7150d6238ff98a06737bde48fa6cce5c818)] Drop support for Node.js v5 **(Piotr Kowalski)**
-
-## :trophy: [v4.1.7](https://github.com/piecioshka/super-event-emitter/compare/v4.1.6...v4.1.7) - 2019-06-01 :trophy:
 
 ### Fixed
 
