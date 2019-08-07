@@ -4,6 +4,12 @@
 
 ---
 
+## :trophy: [v4.1.11](https://github.com/piecioshka/super-event-emitter/compare/v4.1.10...v4.1.11) - 2019-08-07 :trophy:
+
+### Commits
+
+- [[`f21a8b3`](https://github.com/piecioshka/super-event-emitter/commit/f21a8b30300709a2f458e88e9d4114a731dea4ad)] Add missing DefinitelyTyped **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.10](https://github.com/piecioshka/super-event-emitter/compare/v4.1.6...v4.1.10) - 2019-08-07 :trophy:
 
 ### Merged
