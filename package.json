@@ -43,6 +43,7 @@
     "files": [
         "dist",
         "src",
+        "index.d.ts",
         "index.js",
         "package.json",
         "README.md"
