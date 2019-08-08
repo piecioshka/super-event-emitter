@@ -3,14 +3,13 @@
 [![node version](https://img.shields.io/node/v/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 [![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
-[![dependencies](https://david-dm.org/piecioshka/super-event-emitter.svg)](https://github.com/piecioshka/super-event-emitter)
 [![travis-ci](https://img.shields.io/travis/piecioshka/super-event-emitter.svg?maxAge=2592000)](https://travis-ci.org/piecioshka/super-event-emitter)
 [![coveralls](https://coveralls.io/repos/github/piecioshka/super-event-emitter/badge.svg?branch=master)](https://coveralls.io/github/piecioshka/super-event-emitter?branch=master)
 [![snyk](https://snyk.io/test/github/piecioshka/super-event-emitter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/piecioshka/super-event-emitter?targetFile=package.json)
 
 :hammer: Lightweight and simple interpretation of popular event management / aggregation
 
-## Article
+## Motivation
 
 I was created a blog post (in polish) about this tool:<br/>
 <https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
@@ -21,7 +20,7 @@ I was created a blog post (in polish) about this tool:<br/>
 npm install super-event-emitter
 ```
 
-## Usage
+## Usage — CommonJS
 
 ```javascript
 const EventEmitter = require('super-event-emitter');
@@ -29,7 +28,23 @@ const EventEmitter = require('super-event-emitter');
 const { EventEmitter } = require('super-event-emitter');
 ```
 
+## Usage — ECMAScript Modules (ex. in TypeScript world)
+
+```ts
+import { EventEmitter } from "super-event-emitter";
+// or
+// import EventEmitter from "super-event-emitter";
+
+class Cart extends EventEmitter {
+    addProduct(product: Product) {
+        this.emit('cart:addProduct', { product });
+    }
+}
+```
+
 ### Demo #1 — Typical object literal
+
+<details>
 
 ```javascript
 const bar = {};
@@ -43,7 +58,11 @@ bar.on('test', function () {
 bar.emit('test');
 ```
 
+</details>
+
 ### Demo #2 — Class API from ECMAScript 2015
+
+<details>
 
 ```javascript
 class Person extends EventEmitter {
@@ -61,83 +80,11 @@ p1.on('say', function (message) {
 p1.say('I love cookie');
 ```
 
-## API
+</details>
 
-#### `on( name: string, fn: Function, ctx: Object )`
+## Documentation
 
-* `name` - a string value representing the name of event
-* `fn` - action which will be called when event will be triggered
-* `ctx` - object will be context of triggered action
-
-Example:
-
-```javascript
-instance.on('foo', function (payload) {
-    console.log(payload, this);
-}, instance);
-```
-
-Special behavior:
-
-* when `name` = `all` (or `*`) register handler will be fired on any event
-
-```javascript
-instance.on('all', function (name, payload) {
-    // will be fired, when emit any of event type
-    // - name - event name, in this example will be equal: "something"
-    // - payload - data which are sended, in this example will be equal: { foo: 1 }
-});
-
-instance.emit('something', { foo: 1 });
-```
-
-#### `once( name: string, fn: Function, ctx: Object )`
-
-The same as `on` but, after triggered event, destroy all listeners
-
-Example:
-
-```javascript
-instance.once('foo', function (payload) {
-    console.log(payload, this);
-}, instance);
-```
-
-#### `off( name: string, fn: Function )`
-
-* `name` - a string value representing the name of event
-* `fn` - action which will be removed from listeners
-
-Example:
-
-```javascript
-instance.off('foo', fooHandler);
-```
-
-#### `emit( name: string, params: Object )`
-
-* `name` - a string value representing the name of event
-* `params` - will be passed as first argument in called actions
-
-Example:
-
-```javascript
-instance.emit('foo', { name: 'bar' });
-```
-
-## Backward compatibility
-
-For compatibility with any other APIs I was added some **aliases**:
-
-* `on` => `addEventListener`, `addListener`, `bind`
-* `off` => `removeEventListener`, `removeListener`, `unbind`
-* `emit` => `dispatchEventListener`, `dispatchListener`, `trigger`
-
-## TypeScript Definitions
-
-```bash
-typings install github:piecioshka/super-event-emitter/typings.json -GD
-```
+* [API](./docs/api.md)
 
 ## Unit tests
 
