@@ -4,6 +4,12 @@
 
 ---
 
+## :trophy: [v4.1.12](https://github.com/piecioshka/super-event-emitter/compare/v4.1.11...v4.1.12) - 2019-08-08 :trophy:
+
+### Commits
+
+- [[`c8cbc3d`](https://github.com/piecioshka/super-event-emitter/commit/c8cbc3dce18d303b00857f52dbc3704c557f4343)] Better TypeScript Support **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.11](https://github.com/piecioshka/super-event-emitter/compare/v4.1.10...v4.1.11) - 2019-08-07 :trophy:
 
 ### Commits
