@@ -17,7 +17,8 @@
         "test": "jasmine test/specs/**/**.js",
         "coverage": "nyc npm run test && nyc report --reporter=html",
         "coveralls": "nyc npm run test && nyc report --reporter=text-lcov | coveralls -v",
-        "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md"
+        "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md",
+        "postversion": "git push --tags"
     },
     "auto-changelog": {
         "commit-limit": false,
