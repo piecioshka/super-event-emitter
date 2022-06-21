@@ -16,7 +16,6 @@
         "watch": "webpack -w",
         "test": "jasmine test/specs/**/**.js",
         "coverage": "nyc npm run test && nyc report --reporter=html",
-        "coveralls": "nyc npm run test && nyc report --reporter=text-lcov | coveralls -v",
         "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md",
         "postversion": "git push --tags"
     },
@@ -33,7 +32,6 @@
     },
     "devDependencies": {
         "auto-changelog": "^1.16.4",
-        "coveralls": "^3.1.0",
         "jasmine": "^3.6.4",
         "json-loader": "^0.5.7",
         "nyc": "^15.1.0",

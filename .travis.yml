@@ -6,14 +6,7 @@ os:
   - windows
 
 node_js:
-  - "13"
+  - "16"
+  - "14"
   - "12"
-  - "11"
   - "10"
-  - "9"
-  - "8"
-  - "7"
-  - "6"
-
-after_script:
-  - npm run coveralls
