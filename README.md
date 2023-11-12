@@ -3,7 +3,6 @@
 [![node version](https://img.shields.io/node/v/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 [![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
-[![travis-ci](https://api.travis-ci.com/piecioshka/super-event-emitter.svg?branch=master)](https://app.travis-ci.com/github/piecioshka/super-event-emitter)
 [![snyk](https://snyk.io/test/github/piecioshka/super-event-emitter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/piecioshka/super-event-emitter?targetFile=package.json)
 
 :hammer: Lightweight and simple interpretation of popular event management / aggregation
@@ -99,4 +98,4 @@ npm run coverage
 
 ## License
 
-[The MIT License](http://piecioshka.mit-license.org) @ 2016
+[The MIT License](https://piecioshka.mit-license.org) @ 2016
