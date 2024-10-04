@@ -113,7 +113,7 @@ module.exports = __webpack_require__(1);
  * @author Piotr Kowalski <piecioshka@gmail.com> (https://piecioshka.pl/)
  * @name super-event-emitter
  * @description Lightweight and simple interpretation of popular event management
- * @version 4.1.12
+ * @version 4.1.13
  * @license MIT
  * @example
  * var bar = {}; // Or any other object.
@@ -339,7 +339,7 @@ EventEmitter.mixin = function (target) {
 EventEmitter.prototype.mixin = EventEmitter.mixin;
 
 // Put project version.
-EventEmitter.VERSION = "4.1.12";
+EventEmitter.VERSION = "4.1.13";
 
 // To import with destructuring assignment
 EventEmitter.EventEmitter = EventEmitter;

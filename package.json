@@ -1,7 +1,7 @@
 {
     "name": "super-event-emitter",
     "description": "Lightweight and simple interpretation of popular event management",
-    "version": "4.1.12",
+    "version": "4.1.13",
     "license": "MIT",
     "author": {
         "name": "Piotr Kowalski",

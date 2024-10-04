@@ -4,6 +4,14 @@
 
 ---
 
+## :trophy: [v4.1.13](https://github.com/piecioshka/super-event-emitter/compare/v4.1.12...v4.1.13) - 2024-10-04 :trophy:
+
+### Commits
+
+- [[`b9476be`](https://github.com/piecioshka/super-event-emitter/commit/b9476be479d58a93bff68100705c860b9fa01caf)] Remove coveralls.io **(Piotr Kowalski)**
+- [[`b23e30b`](https://github.com/piecioshka/super-event-emitter/commit/b23e30b3dca69959ab9d3482242ca95e32862946)] Upgrade deps **(Piotr Kowalski)**
+- [[`43fbe81`](https://github.com/piecioshka/super-event-emitter/commit/43fbe8185c8d46579e0040f57ce023538ad4ae7a)] Update deps **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.12](https://github.com/piecioshka/super-event-emitter/compare/v4.1.11...v4.1.12) - 2019-08-08 :trophy:
 
 ### Commits
@@ -16,11 +24,27 @@
 
 - [[`f21a8b3`](https://github.com/piecioshka/super-event-emitter/commit/f21a8b30300709a2f458e88e9d4114a731dea4ad)] Add missing DefinitelyTyped **(Piotr Kowalski)**
 
-## :trophy: [v4.1.10](https://github.com/piecioshka/super-event-emitter/compare/v4.1.6...v4.1.10) - 2019-08-07 :trophy:
+## :trophy: [v4.1.10](https://github.com/piecioshka/super-event-emitter/compare/v4.1.9...v4.1.10) - 2019-08-07 :trophy:
+
+### Commits
+
+- [[`5c24616`](https://github.com/piecioshka/super-event-emitter/commit/5c24616de8295f4525ed3ffc99a669418af4c389)] Upgrade deps **(Piotr Kowalski)**
+- [[`f2d1734`](https://github.com/piecioshka/super-event-emitter/commit/f2d1734600d17e1d2790ecf4d2d912f41e1bc0f2)] Define types property in package.json **(Piotr Kowalski)**
+- [[`429bddd`](https://github.com/piecioshka/super-event-emitter/commit/429bdddf0391da0a17f76420f12229823d6da8aa)] Remove useless config file **(Piotr Kowalski)**
+
+## :trophy: [v4.1.9](https://github.com/piecioshka/super-event-emitter/compare/v4.1.8...v4.1.9) - 2019-06-04 :trophy:
 
 ### Merged
 
 - [[`#5`](https://github.com/piecioshka/super-event-emitter/pull/5)] Fix .off for one-time listeners
+
+## :trophy: [v4.1.8](https://github.com/piecioshka/super-event-emitter/compare/v4.1.7...v4.1.8) - 2019-06-01 :trophy:
+
+### Commits
+
+- [[`c4e3e71`](https://github.com/piecioshka/super-event-emitter/commit/c4e3e7150d6238ff98a06737bde48fa6cce5c818)] Drop support for Node.js v5 **(Piotr Kowalski)**
+
+## :trophy: [v4.1.7](https://github.com/piecioshka/super-event-emitter/compare/v4.1.6...v4.1.7) - 2019-06-01 :trophy:
 
 ### Fixed
 
@@ -51,7 +75,7 @@
 
 - [[`a78f345`](https://github.com/piecioshka/super-event-emitter/commit/a78f345b619679675a84d0cf5026df99557fd783)] Add package-lock.json **(Piotr Kowalski)**
 - [[`5471faa`](https://github.com/piecioshka/super-event-emitter/commit/5471faa06aa85456678b595beec0a63e4cd2a0e3)] Reformat code (set max 80 chars per line) **(Piotr Kowalski)**
-- [[`36b7bc5`](https://github.com/piecioshka/super-event-emitter/commit/36b7bc5be18f5d2933583cc904311007f642af4a)] Set state &quot;not reuired&quot; in some arguments **(Piotr Kowalski)**
+- [[`36b7bc5`](https://github.com/piecioshka/super-event-emitter/commit/36b7bc5be18f5d2933583cc904311007f642af4a)] Set state "not reuired" in some arguments **(Piotr Kowalski)**
 
 ## :trophy: [v4.1.4](https://github.com/piecioshka/super-event-emitter/compare/v4.1.3...v4.1.4) - 2016-08-04 :trophy:
 
@@ -107,14 +131,14 @@
 
 ### Commits
 
-- [[`85a9052`](https://github.com/piecioshka/super-event-emitter/commit/85a90523cc0a5fcb9e7a97b3735f4d34203bee86)] Setup eventName in &quot;all&quot; special event **(Piotr Kowalski)**
-- [[`337527c`](https://github.com/piecioshka/super-event-emitter/commit/337527cb6961c9d84c4fddbc4d7a75e2c7c2d28c)] Put more specs about &quot;all&quot; event **(Piotr Kowalski)**
+- [[`85a9052`](https://github.com/piecioshka/super-event-emitter/commit/85a90523cc0a5fcb9e7a97b3735f4d34203bee86)] Setup eventName in "all" special event **(Piotr Kowalski)**
+- [[`337527c`](https://github.com/piecioshka/super-event-emitter/commit/337527cb6961c9d84c4fddbc4d7a75e2c7c2d28c)] Put more specs about "all" event **(Piotr Kowalski)**
 
 ## :trophy: [v3.0.6](https://github.com/piecioshka/super-event-emitter/compare/v3.0.5...v3.0.6) - 2016-03-15 :trophy:
 
 ### Commits
 
-- [[`1da8966`](https://github.com/piecioshka/super-event-emitter/commit/1da8966a4639c526e2ee53f6e19b4a1558aec05c)] Support on &quot;all&quot; event **(Piotr Kowalski)**
+- [[`1da8966`](https://github.com/piecioshka/super-event-emitter/commit/1da8966a4639c526e2ee53f6e19b4a1558aec05c)] Support on "all" event **(Piotr Kowalski)**
 
 ## :trophy: [v3.0.5](https://github.com/piecioshka/super-event-emitter/compare/v3.0.4...v3.0.5) - 2016-03-15 :trophy:
 
@@ -165,7 +189,7 @@
 
 ### Commits
 
-- [[`648fcbd`](https://github.com/piecioshka/super-event-emitter/commit/648fcbdd33eda3347ad5bdd264d9f00d8912e09e)] Remove deps: Jasmine &amp; Underscore **(Piotr Kowalski)**
+- [[`648fcbd`](https://github.com/piecioshka/super-event-emitter/commit/648fcbdd33eda3347ad5bdd264d9f00d8912e09e)] Remove deps: Jasmine & Underscore **(Piotr Kowalski)**
 - [[`c969bb4`](https://github.com/piecioshka/super-event-emitter/commit/c969bb4c03184123187bb0e35337e9084fd8c3ae)] Full coverage in tests. **(Piotr Kowalski)**
 
 ## :rocket: v1.0.0 - 2015-01-04 :rocket:
