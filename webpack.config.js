@@ -1,9 +1,8 @@
 'use strict';
 
-var readPkg = require('read-pkg');
+var pkg = require('./package.json');
 
 module.exports = async () => {
-    var pkg = await readPkg();
     var author = pkg.author.name + ' <' + pkg.author.email + '> (' + pkg.author.url + ')';
 
     return {
