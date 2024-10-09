@@ -4,6 +4,14 @@
 
 ---
 
+## :trophy: [v4.1.14](https://github.com/piecioshka/super-event-emitter/compare/v4.1.13...v4.1.14) - 2024-10-09 :trophy:
+
+### Commits
+
+- [[`d3ab641`](https://github.com/piecioshka/super-event-emitter/commit/d3ab641ab64aa26230f262f37f14a8be841de430)] Remove dist/ from repository **(Piotr Kowalski)**
+- [[`16051f7`](https://github.com/piecioshka/super-event-emitter/commit/16051f7683914491d6e20a4efeedade1a6d712d0)] Support GitHub Workflows **(Piotr Kowalski)**
+- [[`b1c8a60`](https://github.com/piecioshka/super-event-emitter/commit/b1c8a60c968737542908a3327d023191c7bf3dc2)] Save Node.js version **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.13](https://github.com/piecioshka/super-event-emitter/compare/v4.1.12...v4.1.13) - 2024-10-04 :trophy:
 
 ### Commits
