@@ -16,7 +16,7 @@
         "watch": "webpack -w",
         "test": "jasmine test/specs/**/**.js",
         "coverage": "nyc npm run test && nyc report --reporter=html",
-        "version": "npm run build && git add dist/ && auto-changelog -p && git add CHANGELOG.md",
+        "version": "npm run build && auto-changelog -p && git add CHANGELOG.md",
         "postversion": "git push --tags"
     },
     "auto-changelog": {
