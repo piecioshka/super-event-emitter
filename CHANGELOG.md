@@ -4,6 +4,14 @@
 
 ---
 
+## :trophy: [v4.1.15](https://github.com/piecioshka/super-event-emitter/compare/v4.1.14...v4.1.15) - 2024-10-12 :trophy:
+
+### Commits
+
+- [[`d3d323f`](https://github.com/piecioshka/super-event-emitter/commit/d3d323f0f426e4621d197abb14b4f9d1ab7124bd)] Remove unused file **(Piotr Kowalski)**
+- [[`bf3514a`](https://github.com/piecioshka/super-event-emitter/commit/bf3514aec279430a76b3a0d78c92113fbd2dc27f)] Import config file for EditorConfig **(Piotr Kowalski)**
+- [[`e82e933`](https://github.com/piecioshka/super-event-emitter/commit/e82e933a47c222f864b80c67bff7020ba8178615)] Set Node.js version for GitHub Workflows **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.14](https://github.com/piecioshka/super-event-emitter/compare/v4.1.13...v4.1.14) - 2024-10-09 :trophy:
 
 ### Commits
