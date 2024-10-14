@@ -3,7 +3,7 @@
 [![node version](https://img.shields.io/node/v/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
 [![npm version](https://badge.fury.io/js/super-event-emitter.svg)](https://badge.fury.io/js/super-event-emitter)
 [![downloads count](https://img.shields.io/npm/dt/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
-[![license](https://img.shields.io/npm/l/super-event-emitter.svg)](https://www.npmjs.com/package/super-event-emitter)
+[![license](https://img.shields.io/npm/l/super-event-emitter.svg)](https://piecioshka.mit-license.org)
 [![github-ci](https://github.com/piecioshka/super-event-emitter/actions/workflows/testing.yml/badge.svg)](https://github.com/piecioshka/super-event-emitter/actions/workflows/testing.yml)
 
 :hammer: Lightweight and simple interpretation of popular event management / aggregation
