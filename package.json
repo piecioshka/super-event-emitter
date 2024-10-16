@@ -1,6 +1,6 @@
 {
     "name": "super-event-emitter",
-    "description": "Lightweight and simple interpretation of popular event management",
+    "description": "🔨 Lightweight and simple interpretation of popular event management",
     "version": "4.1.15",
     "license": "MIT",
     "author": {
@@ -16,8 +16,7 @@
         "watch": "webpack -w",
         "test": "jasmine test/specs/**/**.js",
         "coverage": "nyc npm run test && nyc report --reporter=html",
-        "version": "npm run build && auto-changelog -p && git add CHANGELOG.md",
-        "postversion": "git push --tags"
+        "version": "npm run build && auto-changelog -p && git add CHANGELOG.md"
     },
     "auto-changelog": {
         "commit-limit": false,

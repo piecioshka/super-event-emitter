@@ -6,7 +6,7 @@
 [![license](https://img.shields.io/npm/l/super-event-emitter.svg)](https://piecioshka.mit-license.org)
 [![github-ci](https://github.com/piecioshka/super-event-emitter/actions/workflows/testing.yml/badge.svg)](https://github.com/piecioshka/super-event-emitter/actions/workflows/testing.yml)
 
-:hammer: Lightweight and simple interpretation of popular event management / aggregation
+🔨 Lightweight and simple interpretation of popular event management / aggregation
 
 ## Motivation
 
