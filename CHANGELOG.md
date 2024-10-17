@@ -4,6 +4,14 @@
 
 ---
 
+## :trophy: [v4.1.17](https://github.com/piecioshka/super-event-emitter/compare/v4.1.15...v4.1.17) - 2024-10-17 :trophy:
+
+### Commits
+
+- [[`cfe4a81`](https://github.com/piecioshka/super-event-emitter/commit/cfe4a815ea990dbf138a5815885870ad1063d43f)] Configure GitHub Workflows **(Piotr Kowalski)**
+- [[`9f710f3`](https://github.com/piecioshka/super-event-emitter/commit/9f710f3ae02b878c19d7bbb9e33506fcf4206f91)] Add size badge **(Piotr Kowalski)**
+- [[`70f26da`](https://github.com/piecioshka/super-event-emitter/commit/70f26da3bdf4a463f8bafb0143347bea3447c9a4)] Update .gitignore **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.15](https://github.com/piecioshka/super-event-emitter/compare/v4.1.14...v4.1.15) - 2024-10-12 :trophy:
 
 ### Commits
