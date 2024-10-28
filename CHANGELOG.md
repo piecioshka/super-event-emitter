@@ -4,6 +4,14 @@
 
 ---
 
+## :trophy: [v4.1.18](https://github.com/piecioshka/super-event-emitter/compare/v4.1.17...v4.1.18) - 2024-10-28 :trophy:
+
+### Commits
+
+- [[`078d985`](https://github.com/piecioshka/super-event-emitter/commit/078d9856c73f667e3683d8654be33364fcdb4303)] Remove FUNDING.yml **(Piotr Kowalski)**
+- [[`9df4d68`](https://github.com/piecioshka/super-event-emitter/commit/9df4d688ab59e5f6d7fa9081ba2d92da97b63058)] Setup GitHub Workflow for testing **(Piotr Kowalski)**
+- [[`ccbc970`](https://github.com/piecioshka/super-event-emitter/commit/ccbc970fa679492a9a65a71d27e06af72b63825f)] Setup GitHub Workflow for testing **(Piotr Kowalski)**
+
 ## :trophy: [v4.1.17](https://github.com/piecioshka/super-event-emitter/compare/v4.1.15...v4.1.17) - 2024-10-17 :trophy:
 
 ### Commits
