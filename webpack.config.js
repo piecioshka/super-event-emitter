@@ -1,47 +1,70 @@
-'use strict';
+"use strict";
 
-var pkg = require('./package.json');
+const pkg = require("./package.json");
+const author =
+    pkg.author.name + " <" + pkg.author.email + "> (" + pkg.author.url + ")";
 
-module.exports = async () => {
-    var author = pkg.author.name + ' <' + pkg.author.email + '> (' + pkg.author.url + ')';
+module.exports = {
+    mode: "production",
 
-    return {
-        mode: 'none',
+    entry: "./src/index.ts",
 
-        entry: {
-            'super-event-emitter': './index.js',
-        },
+    resolve: {
+        extensions: [".ts", ".js"],
+    },
 
-        output: {
-            library: 'EventEmitter',
-            libraryTarget: 'umd',
-            filename: '[name].js',
-            path: __dirname + '/dist/'
-        },
+    output: {
+        library: "SuperEventEmitter",
+        libraryTarget: "umd",
+        filename: "[name].js",
+        path: __dirname + "/dist/",
+        clean: true,
+    },
 
-        devtool: 'source-map',
+    devtool: "source-map",
 
-        module: {
-            rules: [
-                {
-                    test: /\.json$/,
-                    loader: 'json-loader'
-                },
-                {
-                    test: /\.js$/,
-                    loader: 'string-replace-loader',
-                    query: {
-                        multiple: [
-                            { search: '$AUTHOR$', replace: author },
-                            { search: '$NAME$', replace: pkg.name },
-                            { search: '$DESCRIPTION$', replace: pkg.description },
-                            { search: '$VERSION$', replace: pkg.version },
-                            { search: '$PKG_VERSION$', replace: pkg.version },
-                            { search: '$LICENSE$', replace: pkg.license }
-                        ]
-                    }
-                }
-            ]
-        }
-    };
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: [
+                    {
+                        loader: "ts-loader",
+                    },
+                    {
+                        loader: "string-replace-loader",
+                        options: {
+                            multiple: [
+                                {
+                                    search: "$AUTHOR$",
+                                    replace: author,
+                                    strict: true,
+                                },
+                                {
+                                    search: "$NAME$",
+                                    replace: pkg.name,
+                                    strict: true,
+                                },
+                                {
+                                    search: "$DESCRIPTION$",
+                                    replace: pkg.description,
+                                    strict: true,
+                                },
+                                {
+                                    search: "$VERSION$",
+                                    replace: pkg.version,
+                                    strict: true,
+                                },
+                                {
+                                    search: "$LICENSE$",
+                                    replace: pkg.license,
+                                    strict: true,
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        ],
+    },
 };
