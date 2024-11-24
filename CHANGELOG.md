@@ -4,7 +4,13 @@
 
 ---
 
-## :trophy: [v5.0.1](https://github.com/piecioshka/super-event-emitter/compare/v5.0.0...v5.0.1) :trophy:
+## :trophy: [v5.0.2](https://github.com/piecioshka/super-event-emitter/compare/v5.0.1...v5.0.2) :trophy:
+
+### Commits
+
+- [[`3570670`](https://github.com/piecioshka/super-event-emitter/commit/35706706eab79c9cd7f87fc05b72e26af91448ba)] Merge building prod version in pipeline **(Piotr Kowalski)**
+
+## :trophy: [v5.0.1](https://github.com/piecioshka/super-event-emitter/compare/v5.0.0...v5.0.1) - 2024-11-25 :trophy:
 
 ### Commits
 
