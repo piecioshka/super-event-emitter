@@ -4,7 +4,13 @@
 
 ---
 
-## :trophy: [v5.0.0](https://github.com/piecioshka/super-event-emitter/compare/v4.1.18...v5.0.0) :trophy:
+## :trophy: [v5.0.1](https://github.com/piecioshka/super-event-emitter/compare/v5.0.0...v5.0.1) :trophy:
+
+### Commits
+
+- [[`540b0da`](https://github.com/piecioshka/super-event-emitter/commit/540b0da11ba62b1a078dafbf118f355e1e682338)] Build a dist/ in versioning pipeline **(Piotr Kowalski)**
+
+## :trophy: [v5.0.0](https://github.com/piecioshka/super-event-emitter/compare/v4.1.18...v5.0.0) - 2024-11-25 :trophy:
 
 ### Merged
 
