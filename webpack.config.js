@@ -56,6 +56,11 @@ module.exports = {
                                     strict: true,
                                 },
                                 {
+                                    search: "$VERSION$",
+                                    replace: pkg.version,
+                                    strict: true,
+                                },
+                                {
                                     search: "$LICENSE$",
                                     replace: pkg.license,
                                     strict: true,

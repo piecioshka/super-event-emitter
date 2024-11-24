@@ -1,5 +1,7 @@
 import { SuperEventEmitter } from "./index";
 
+const toString = (entity: unknown) => Object.prototype.toString.call(entity);
+
 describe("SuperEventEmitter", function () {
     let entity: SuperEventEmitter;
     let noop: () => void;
@@ -30,11 +32,12 @@ describe("SuperEventEmitter", function () {
                 expect(() => {
                     // @ts-expect-error
                     SuperEventEmitter();
-                }).toBeDefined();
+                }).toThrow();
             });
 
             it("should allow mixing with existing objects", function () {
-                const existing = SuperEventEmitter.mixin({});
+                const existing = {} as SuperEventEmitter;
+                SuperEventEmitter.mixin(existing);
                 existing.on("foo", noop);
                 existing.emit("foo");
                 expect(noop).toHaveBeenCalled();
@@ -46,7 +49,7 @@ describe("SuperEventEmitter", function () {
 
                 const instance = new SuperEventEmitter();
                 const anotherInstance = SuperEventEmitter.mixin({});
-                expect(instance).toEqual(instance);
+                expect(anotherInstance).not.toEqual(instance);
             });
 
             it("should have basic methods defined", function () {
@@ -93,17 +96,17 @@ describe("SuperEventEmitter", function () {
             });
 
             it("should encapsulate data", function () {
-                const entity2 = new SuperEventEmitter();
-                entity.on("foo", function () {});
-                entity2.on("foo", noop);
+                const callback1 = jest.fn();
+                const callback2 = jest.fn();
+                const entity2 = SuperEventEmitter.mixin({});
+                entity.on("foo", callback1);
+                entity2.on("foo", callback2);
                 entity.emit("foo");
-                expect(noop).not.toHaveBeenCalled();
+                expect(callback2).not.toHaveBeenCalled();
             });
 
             it("should create empty list of listeners", function () {
-                expect(Object.prototype.toString.call(entity._listeners)).toBe(
-                    "[object Array]"
-                );
+                expect(toString(entity._listeners)).toBe("[object Array]");
             });
         });
 
@@ -135,23 +138,23 @@ describe("SuperEventEmitter", function () {
                 expect(noop).toHaveBeenCalledWith({ foo: "bar" });
             });
 
-            it("should throw error when try run with bad params", function () {
+            it("should throw error when try run with incorrect params", function () {
                 expect(function () {
                     // @ts-expect-error
                     entity.on();
-                }).toThrow();
+                }).toThrow("SuperEventEmitter#on: name is not a string");
                 expect(function () {
                     // @ts-expect-error
                     entity.on(12);
-                }).toThrow();
+                }).toThrow("SuperEventEmitter#on: name is not a string");
                 expect(function () {
                     // @ts-expect-error
                     entity.on("foo");
-                }).toThrow();
+                }).toThrow("SuperEventEmitter#on: fn is not a function");
                 expect(function () {
                     // @ts-expect-error
                     entity.on("foo", 123);
-                }).toThrow();
+                }).toThrow("SuperEventEmitter#on: fn is not a function");
                 expect(function () {
                     entity.on("foo", Function);
                 }).not.toThrow();
@@ -199,11 +202,26 @@ describe("SuperEventEmitter", function () {
                 expect(entity._listeners.length).toEqual(0);
             });
 
-            it("should throw error when try run with bad params", function () {
+            it("should throw error when try run with incorrect params", function () {
                 expect(function () {
                     // @ts-expect-error
                     entity.once();
-                }).toThrow();
+                }).toThrow("SuperEventEmitter#once: name is not a string");
+                expect(function () {
+                    // @ts-expect-error
+                    entity.once(12);
+                }).toThrow("SuperEventEmitter#once: name is not a string");
+                expect(function () {
+                    // @ts-expect-error
+                    entity.once("foo");
+                }).toThrow("SuperEventEmitter#once: fn is not a function");
+                expect(function () {
+                    // @ts-expect-error
+                    entity.once("foo", 123);
+                }).toThrow("SuperEventEmitter#once: fn is not a function");
+                expect(function () {
+                    entity.once("foo", Function);
+                }).not.toThrow();
             });
 
             it('should support event "all"', function (done) {
@@ -233,15 +251,11 @@ describe("SuperEventEmitter", function () {
             });
 
             it("should not remove listeners list", function () {
-                expect(Object.prototype.toString.call(entity._listeners)).toBe(
-                    "[object Array]"
-                );
+                expect(toString(entity._listeners)).toBe("[object Array]");
                 expect(entity._listeners.length).toBe(0);
                 entity.once("foo", noop);
                 entity.emit("foo");
-                expect(Object.prototype.toString.call(entity._listeners)).toBe(
-                    "[object Array]"
-                );
+                expect(toString(entity._listeners)).toBe("[object Array]");
                 expect(entity._listeners.length).toBe(0);
             });
 
@@ -291,22 +305,18 @@ describe("SuperEventEmitter", function () {
                 expect(callback).not.toHaveBeenCalled();
             });
 
-            it("should not throw error when try run with bad params", function () {
+            it("should not throw error when try run with incorrect params", function () {
                 expect(function () {
                     entity.off();
                 }).not.toThrow();
             });
 
             it("should not remove listeners list", function () {
-                expect(Object.prototype.toString.call(entity._listeners)).toBe(
-                    "[object Array]"
-                );
+                expect(toString(entity._listeners)).toBe("[object Array]");
                 expect(entity._listeners.length).toBe(0);
                 entity.once("foo", noop);
                 entity.emit("foo");
-                expect(Object.prototype.toString.call(entity._listeners)).toBe(
-                    "[object Array]"
-                );
+                expect(toString(entity._listeners)).toBe("[object Array]");
                 expect(entity._listeners.length).toBe(0);
             });
 
@@ -336,7 +346,7 @@ describe("SuperEventEmitter", function () {
                 expect(noop).toHaveBeenCalled();
             });
 
-            it("should throw error when try run with bad params", function () {
+            it("should throw error when try run with incorrect params", function () {
                 expect(function () {
                     // @ts-expect-error
                     entity.emit();

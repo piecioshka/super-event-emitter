@@ -1,4 +1,4 @@
-# API
+# SuperEventEmitter API
 
 #### `on( name: string, fn: Function, ctx: Object )`
 

@@ -12,7 +12,7 @@
 ## Motivation
 
 I was created a blog post (in polish) about motivation why I created this tool:<br/>
-<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
+<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter.html>
 
 _(I'm sorry, but I don't have time to translate this article into English)_
 

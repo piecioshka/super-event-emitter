@@ -40,15 +40,19 @@ function isFunction(arg: unknown): arg is () => void {
     return typeof arg === "function";
 }
 
+/**
+ * Add an event listener. Note that this method is not part of the EventEmitter
+ */
 function registerListener(
     this: SuperEventEmitter,
+    label: string,
     name: MyEvent["name"],
     fn: MyEvent["fn"],
     run: MyEvent["run"],
     ctx: MyEvent["ctx"]
 ): void {
-    assert(isString(name), "SuperEventEmitter#on: name is not a string");
-    assert(isFunction(fn), "SuperEventEmitter#on: fn is not a function");
+    assert(isString(name), `SuperEventEmitter#${label}: name is not a string`);
+    assert(isFunction(fn), `SuperEventEmitter#${label}: fn is not a function`);
 
     // If the context is not passed, use `this`.
     ctx = ctx || this;
@@ -60,12 +64,15 @@ function registerListener(
 export class SuperEventEmitter {
     _listeners: MyEvent[] = [];
 
+    /**
+     * Register listener on concrete name with specified handler.
+     */
     on = (
         name: MyEvent["name"],
         fn: MyEvent["fn"],
         ctx: MyEvent["ctx"] = this
     ) => {
-        registerListener.call(this, name, fn, fn, ctx);
+        registerListener.call(this, "on", name, fn, fn, ctx);
         return this;
     };
 
@@ -73,6 +80,10 @@ export class SuperEventEmitter {
     addListener = this.on;
     bind = this.on;
 
+    /**
+     * Register listener.
+     * Remove them after once event triggered.
+     */
     once = (
         name: MyEvent["name"],
         fn: MyEvent["fn"],
@@ -85,7 +96,7 @@ export class SuperEventEmitter {
             self.off(name, fn);
         }
 
-        registerListener.call(this, name, fn, onceHandler, ctx);
+        registerListener.call(this, "once", name, fn, onceHandler, ctx);
 
         return this;
     };
