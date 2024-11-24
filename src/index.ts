@@ -156,9 +156,7 @@ export class SuperEventEmitter {
 
     static mixin = function <T extends Record<string, any>>(
         target: T
-    ): T &
-        Record<keyof SuperEventEmitter, any> &
-        Record<keyof typeof SuperEventEmitter, any> {
+    ): T & Record<keyof SuperEventEmitter, any> {
         const emitter = new SuperEventEmitter();
 
         for (let key in emitter) {
