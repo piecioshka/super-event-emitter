@@ -131,14 +131,14 @@ describe("SuperEventEmitter", function () {
                 entity.emit("foo");
             });
 
-            it("can add listener with expected params", function () {
+            it("can add listener with expected payload", function () {
                 entity.on("foo", noop);
                 entity.emit("foo", { foo: "bar" });
 
                 expect(noop).toHaveBeenCalledWith({ foo: "bar" });
             });
 
-            it("should throw error when try run with incorrect params", function () {
+            it("should throw error when try run with incorrect payload", function () {
                 expect(function () {
                     // @ts-expect-error
                     entity.on();
@@ -202,7 +202,7 @@ describe("SuperEventEmitter", function () {
                 expect(entity._listeners.length).toEqual(0);
             });
 
-            it("should throw error when try run with incorrect params", function () {
+            it("should throw error when try run with incorrect payload", function () {
                 expect(function () {
                     // @ts-expect-error
                     entity.once();
@@ -305,7 +305,7 @@ describe("SuperEventEmitter", function () {
                 expect(callback).not.toHaveBeenCalled();
             });
 
-            it("should not throw error when try run with incorrect params", function () {
+            it("should not throw error when try run with incorrect payload", function () {
                 expect(function () {
                     entity.off();
                 }).not.toThrow();
@@ -346,7 +346,7 @@ describe("SuperEventEmitter", function () {
                 expect(noop).toHaveBeenCalled();
             });
 
-            it("should throw error when try run with incorrect params", function () {
+            it("should throw error when try run with incorrect payload", function () {
                 expect(function () {
                     // @ts-expect-error
                     entity.emit();
@@ -369,10 +369,10 @@ describe("SuperEventEmitter", function () {
                 expect(point).toEqual(6);
             });
 
-            it("should allow passing params", function () {
+            it("should allow passing payload", function () {
                 entity.on("foo", noop);
-                entity.emit("foo", "params");
-                expect(noop).toHaveBeenCalledWith("params");
+                entity.emit("foo", "payload");
+                expect(noop).toHaveBeenCalledWith("payload");
             });
 
             it("should allow chaining emits", function () {

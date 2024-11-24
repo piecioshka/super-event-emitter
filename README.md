@@ -33,7 +33,7 @@ SuperEventEmitter.mixin(bar);
 
 bar.on('test', function () {
     console.log('triggered!');
-}, this);
+});
 
 bar.emit('test');
 ```
