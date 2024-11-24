@@ -4,6 +4,12 @@
 
 ---
 
+## :trophy: [v5.0.0](https://github.com/piecioshka/super-event-emitter/compare/v4.1.18...v5.0.0) :trophy:
+
+### Merged
+
+- [[`#25`](https://github.com/piecioshka/super-event-emitter/pull/25)] Migrate to TypeScript
+
 ## :trophy: [v4.1.18](https://github.com/piecioshka/super-event-emitter/compare/v4.1.17...v4.1.18) - 2024-10-28 :trophy:
 
 ### Commits
