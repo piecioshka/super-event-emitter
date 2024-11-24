@@ -1,6 +1,6 @@
-# API
+# SuperEventEmitter API
 
-#### `on( name: string, fn: Function, ctx: Object )`
+## `on( name: string, fn: Function, ctx?: Object )`
 
 * `name` - a string value representing the name of event
 * `fn` - action which will be called when event will be triggered
@@ -9,6 +9,10 @@
 Example:
 
 ```javascript
+instance.on('foo', function (payload) {
+    console.log(payload, this);
+});
+
 instance.on('foo', function (payload) {
     console.log(payload, this);
 }, instance);
@@ -28,7 +32,7 @@ instance.on('all', function (name, payload) {
 instance.emit('something', { foo: 1 });
 ```
 
-#### `once( name: string, fn: Function, ctx: Object )`
+## `once( name: string, fn: Function, ctx?: Object )`
 
 The same as `on` but, after triggered event, destroy all listeners
 
@@ -37,10 +41,14 @@ Example:
 ```javascript
 instance.once('foo', function (payload) {
     console.log(payload, this);
+});
+
+instance.once('foo', function (payload) {
+    console.log(payload, this);
 }, instance);
 ```
 
-#### `off( name: string, fn: Function )`
+## `off( name?: string, fn?: Function )`
 
 * `name` - a string value representing the name of event
 * `fn` - action which will be removed from listeners
@@ -48,17 +56,20 @@ instance.once('foo', function (payload) {
 Example:
 
 ```javascript
+instance.off();
+instance.off('foo');
 instance.off('foo', fooHandler);
 ```
 
-#### `emit( name: string, params: Object )`
+## `emit( name: string, payload?: Object )`
 
 * `name` - a string value representing the name of event
-* `params` - will be passed as first argument in called actions
+* `payload` - will be passed as first argument in called actions
 
 Example:
 
 ```javascript
+instance.emit('foo');
 instance.emit('foo', { name: 'bar' });
 ```
 

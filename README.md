@@ -11,8 +11,10 @@
 
 ## Motivation
 
-I was created a blog post (in polish) about this tool:<br/>
-<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter-js.html>
+I was created a blog post (in polish) about motivation why I created this tool:<br/>
+<https://piecioshka.pl/blog/2016/01/29/narzedzia-swiata-super-event-emitter.html>
+
+_(I'm sorry, but I don't have time to translate this article into English)_
 
 ## Installation
 
@@ -23,49 +25,25 @@ npm install super-event-emitter
 ## Usage — CommonJS
 
 ```javascript
-const EventEmitter = require('super-event-emitter');
-// or
-const { EventEmitter } = require('super-event-emitter');
-```
+const { SuperEventEmitter } = require('super-event-emitter');
 
-## Usage — ECMAScript Modules (ex. in TypeScript world)
-
-```ts
-import { EventEmitter } from "super-event-emitter";
-// or
-// import EventEmitter from "super-event-emitter";
-
-class Cart extends EventEmitter {
-    addProduct(product: Product) {
-        this.emit('cart:addProduct', { product });
-    }
-}
-```
-
-### Demo #1 — Typical object literal
-
-<details>
-
-```javascript
 const bar = {};
 
-EventEmitter.mixin(bar);
+SuperEventEmitter.mixin(bar);
 
 bar.on('test', function () {
     console.log('triggered!');
-}, this);
+});
 
 bar.emit('test');
 ```
 
-</details>
+## Usage — ECMAScript Modules `*.mjs` or TypeScript `*.ts`
 
-### Demo #2 — Class API from ECMAScript 2015
+```ts
+import { SuperEventEmitter } from "super-event-emitter";
 
-<details>
-
-```javascript
-class Person extends EventEmitter {
+class Person extends SuperEventEmitter {
     say(message) {
         this.emit('say', message);
     }
@@ -80,24 +58,10 @@ p1.on('say', function (message) {
 p1.say('I love cookie');
 ```
 
-</details>
-
 ## Documentation
 
-* [API](./docs/api.md)
-
-## Unit tests
-
-```bash
-npm test
-```
-
-## Code coverage
-
-```bash
-npm run coverage
-```
+API Documentation is available in separated [document](./docs/api.md).
 
 ## License
 
-[The MIT License](https://piecioshka.mit-license.org) @ 2016
+[The MIT License](https://piecioshka.mit-license.org) @ 2016-2024

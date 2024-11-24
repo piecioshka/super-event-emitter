@@ -9,13 +9,12 @@
         "url": "https://piecioshka.pl/"
     },
     "scripts": {
-        "clear": "rm -rf coverage/ .nyc_output/",
-        "clear:all": "rm -rf node_modules/ && npm run clear",
-        "prebuild": "rm -rf dist/",
-        "build": "webpack --profile",
+        "build": "webpack",
+        "build:prod": "webpack --mode production --no-devtool",
         "watch": "webpack -w",
-        "test": "jasmine test/specs/**/**.js",
-        "coverage": "nyc npm run test && nyc report --reporter=html",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "coverage": "jest --coverage",
         "version": "auto-changelog -p && git add CHANGELOG.md"
     },
     "auto-changelog": {
@@ -30,21 +29,25 @@
         "node": ">=6"
     },
     "devDependencies": {
-        "auto-changelog": "^1.16.4",
-        "jasmine": "^3.6.4",
-        "json-loader": "^0.5.7",
-        "nyc": "^15.1.0",
-        "string-replace-loader": "^2.3.0",
-        "webpack": "^4.46.0",
-        "webpack-cli": "^3.3.12"
+        "@types/jest": "^29.5.14",
+        "auto-changelog": "^2.5.0",
+        "jest": "^29.7.0",
+        "string-replace-loader": "^3.1.0",
+        "ts-jest": "^29.2.5",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.7.2",
+        "webpack": "^5.96.1",
+        "webpack-cli": "^5.1.4"
     },
     "files": [
         "dist",
-        "src",
-        "index.d.ts",
+        "types",
         "index.js",
         "package.json",
-        "README.md"
+        "LICENSE",
+        "README.md",
+        "CHANGELOG.md",
+        "!**/*.spec.*"
     ],
     "keywords": [
         "super",
@@ -67,6 +70,6 @@
         "trigger",
         "simple"
     ],
-    "main": "./dist/super-event-emitter.js",
-    "types": "./index.d.ts"
+    "main": "./index.js",
+    "types": "./types/index.d.ts"
 }
