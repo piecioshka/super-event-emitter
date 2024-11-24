@@ -5,7 +5,9 @@ const author =
     pkg.author.name + " <" + pkg.author.email + "> (" + pkg.author.url + ")";
 
 module.exports = {
-    mode: "production",
+    mode: "development",
+
+    devtool: "source-map",
 
     entry: "./src/index.ts",
 
@@ -18,10 +20,9 @@ module.exports = {
         libraryTarget: "umd",
         filename: "[name].js",
         path: __dirname + "/dist/",
+        globalObject: "this",
         clean: true,
     },
-
-    devtool: "source-map",
 
     module: {
         rules: [

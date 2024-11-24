@@ -10,7 +10,8 @@
     },
     "scripts": {
         "prebuild": "rm -rf dist/",
-        "build": "webpack --profile",
+        "build": "webpack",
+        "build:prod": "webpack --mode production --no-devtool",
         "watch": "webpack -w",
         "test": "jest",
         "test:watch": "jest --watch",

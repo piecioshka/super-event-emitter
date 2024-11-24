@@ -25,30 +25,8 @@ npm install super-event-emitter
 ## Usage — CommonJS
 
 ```javascript
-const SuperEventEmitter = require('super-event-emitter');
-// or
 const { SuperEventEmitter } = require('super-event-emitter');
-```
 
-## Usage — ECMAScript Modules (ex. in TypeScript world)
-
-```ts
-import { SuperEventEmitter } from "super-event-emitter";
-// or
-// import SuperEventEmitter from "super-event-emitter";
-
-class Cart extends SuperEventEmitter {
-    addProduct(product: Product) {
-        this.emit('cart:addProduct', { product });
-    }
-}
-```
-
-### Demo #1 — Typical object literal
-
-<details>
-
-```javascript
 const bar = {};
 
 SuperEventEmitter.mixin(bar);
@@ -60,13 +38,11 @@ bar.on('test', function () {
 bar.emit('test');
 ```
 
-</details>
+## Usage — ECMAScript Modules `*.mjs` or TypeScript `*.ts`
 
-### Demo #2 — Class API from ECMAScript 2015
+```ts
+import { SuperEventEmitter } from "super-event-emitter";
 
-<details>
-
-```javascript
 class Person extends SuperEventEmitter {
     say(message) {
         this.emit('say', message);
@@ -81,8 +57,6 @@ p1.on('say', function (message) {
 
 p1.say('I love cookie');
 ```
-
-</details>
 
 ## Documentation
 
