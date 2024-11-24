@@ -15,8 +15,7 @@
         "test": "jest",
         "test:watch": "jest --watch",
         "coverage": "jest --coverage",
-        "preversion": "npm run build:prod",
-        "version": "auto-changelog -p && git add CHANGELOG.md"
+        "version": "npm run build:prod && auto-changelog -p && git add CHANGELOG.md"
     },
     "auto-changelog": {
         "commit-limit": false,
