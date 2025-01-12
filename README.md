@@ -64,4 +64,4 @@ API Documentation is available in separated [document](./docs/api.md).
 
 ## License
 
-[The MIT License](https://piecioshka.mit-license.org) @ 2016-2024
+[The MIT License](https://piecioshka.mit-license.org) @ 2016
