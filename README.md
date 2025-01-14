@@ -16,13 +16,13 @@ I was created a blog post (in polish) about motivation why I created this tool:<
 
 _(I'm sorry, but I don't have time to translate this article into English)_
 
-## Installation
+## Usage — CommonJS
+
+Installation:
 
 ```bash
 npm install super-event-emitter
 ```
-
-## Usage — CommonJS
 
 ```javascript
 const { SuperEventEmitter } = require('super-event-emitter');
