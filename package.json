@@ -23,7 +23,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/piecioshka/super-event-emitter.git"
+        "url": "git+ssh://git@github.com/piecioshka/super-event-emitter.git"
     },
     "engines": {
         "node": ">=6"
