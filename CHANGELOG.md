@@ -4,7 +4,15 @@
 
 ---
 
-## :trophy: [v5.0.2](https://github.com/piecioshka/super-event-emitter/compare/v5.0.1...v5.0.2) :trophy:
+## :trophy: [v5.0.3](https://github.com/piecioshka/super-event-emitter/compare/v5.0.2...v5.0.3) :trophy:
+
+### Commits
+
+- [[`60e7219`](https://github.com/piecioshka/super-event-emitter/commit/60e7219982921ba6f4fc88785bf22abc3087f9b5)] Reformat with Prettier **(Piotr Kowalski)**
+- [[`579f8d6`](https://github.com/piecioshka/super-event-emitter/commit/579f8d6f9f2567ebad9a9c45d2583fd6070cfb87)] Delete LICENSE **(Piotr Kowalski)**
+- [[`feea885`](https://github.com/piecioshka/super-event-emitter/commit/feea8852be0c6ab53df75cb1787d6e04aef63c90)] Split installation section for Usage & CLI **(Piotr Kowalski)**
+
+## :trophy: [v5.0.2](https://github.com/piecioshka/super-event-emitter/compare/v5.0.1...v5.0.2) - 2024-11-25 :trophy:
 
 ### Commits
 
