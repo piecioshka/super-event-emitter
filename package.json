@@ -15,7 +15,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
-    "version": "npm run build:prod && auto-changelog -p && git add CHANGELOG.md"
+    "version": "npm run build:prod",
+    "postversion": "auto-changelog && git add CHANGELOG.md && git commit --amend --no-edit --no-verify && git tag -f v$npm_package_version"
   },
   "auto-changelog": {
     "commitLimit": false,
